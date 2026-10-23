@@ -1,0 +1,352 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="theme-color" content="#0b1020">
+<title>Curso Livre — Venda online com método</title>
+<meta name="description" content="Curso Livre: 7 módulos práticos para estruturar sua operação de e-commerce, da pesquisa de produto à gestão de crescimento.">
+<style>
+:root{
+  --bg:#0b1020; --bg2:#121936; --card:#161e40; --line:#27315f;
+  --txt:#eef1ff; --muted:#a3acd6; --accent:#ffd23f; --accent2:#7c5cff; --accent3:#22d3a6;
+  --radius:20px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;
+  padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+a{color:inherit;text-decoration:none}
+.wrap{width:min(1120px,100% - 40px);margin-inline:auto}
+section{padding:72px 0;position:relative}
+h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
+h2{font-size:clamp(1.7rem,5vw,2.6rem);margin-bottom:12px}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
+.lead{color:var(--muted);font-size:1.05rem;max-width:620px}
+.grad{background:linear-gradient(90deg,var(--accent),#ff8a5c 50%,var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+
+/* nav */
+nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(11,16,32,.72);border-bottom:1px solid rgba(255,255,255,.06);padding-top:env(safe-area-inset-top)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
+.logo{font-weight:800;font-size:1.15rem;display:flex;align-items:center;gap:8px}
+.logo i{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-style:normal;color:#0b1020;font-size:.95rem}
+.links{display:none;gap:26px;font-size:.92rem;color:var(--muted)}
+.links a:hover{color:var(--txt)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:1rem;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s;min-height:48px}
+.btn-primary{background:linear-gradient(90deg,var(--accent),#ffb347);color:#0b1020;box-shadow:0 10px 30px -8px rgba(255,210,63,.55)}
+.btn-primary:hover{transform:translateY(-2px)}
+.btn-ghost{border:1px solid var(--line);color:var(--txt);background:rgba(255,255,255,.03)}
+.btn-sm{padding:9px 18px;min-height:40px;font-size:.9rem}
+
+/* hero */
+.hero{padding-top:130px;overflow:hidden}
+.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);z-index:0;opacity:.5}
+.hero::before{width:380px;height:380px;background:var(--accent2);top:-80px;right:-120px}
+.hero::after{width:300px;height:300px;background:#ff6b4a;opacity:.25;bottom:-60px;left:-100px}
+.hero .wrap{position:relative;z-index:1;display:grid;gap:44px}
+.hero h1{font-size:clamp(2.3rem,9vw,4.4rem);margin-bottom:18px}
+.hero p.lead{margin-bottom:28px}
+.cta{display:flex;flex-wrap:wrap;gap:12px}
+.badge{display:inline-flex;gap:8px;align-items:center;padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:.82rem;color:var(--muted);background:rgba(255,255,255,.03);margin-bottom:20px}
+.badge b{width:8px;height:8px;border-radius:50%;background:var(--accent3);box-shadow:0 0 0 4px rgba(34,211,166,.2);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(34,211,166,0)}}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
+.stat{padding:16px 10px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid var(--line);text-align:center}
+.stat strong{display:block;font-size:1.7rem;color:var(--accent)}
+.stat span{font-size:.78rem;color:var(--muted)}
+
+/* hero visual */
+.visual{position:relative;min-height:340px;display:grid;place-items:center}
+.mock{width:min(100%,380px);background:linear-gradient(160deg,var(--card),#0f1530);border:1px solid var(--line);border-radius:26px;padding:22px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7);animation:float 6s ease-in-out infinite}
+@keyframes float{50%{transform:translateY(-12px)}}
+.mock .row{display:flex;justify-content:space-between;font-size:.88rem;padding:9px 0;border-bottom:1px dashed var(--line);color:var(--muted)}
+.mock .row b{color:var(--txt)}
+.mock .total{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding:14px;border-radius:14px;background:rgba(34,211,166,.12);color:var(--accent3);font-weight:800}
+.mock .total span:last-child{font-size:1.4rem}
+.mock h4{margin-bottom:8px;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent)}
+.chip{position:absolute;padding:10px 14px;border-radius:14px;background:var(--bg2);border:1px solid var(--line);font-size:.82rem;font-weight:600;box-shadow:0 14px 30px -10px rgba(0,0,0,.6)}
+.chip.a{top:6px;left:0;animation:float 5s ease-in-out infinite}
+.chip.b{bottom:10px;right:0;animation:float 7s ease-in-out infinite reverse}
+
+/* marquee */
+.marquee{border-block:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:16px 0;white-space:nowrap}
+.marquee div{display:inline-block;animation:slide 28s linear infinite;color:var(--muted);font-weight:600}
+.marquee span{margin:0 26px}
+.marquee span::before{content:"✦ ";color:var(--accent)}
+@keyframes slide{to{transform:translateX(-50%)}}
+
+/* steps */
+.cycle{display:grid;gap:12px;margin-top:34px}
+.step{display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
+.step em{font-style:normal;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;background:rgba(124,92,255,.18);flex:none}
+.step b{display:block}.step small{color:var(--muted)}
+
+/* modules */
+.mods{display:grid;gap:14px;margin-top:36px}
+.mod{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:border-color .2s}
+.mod.open{border-color:var(--accent2)}
+.mod button{width:100%;background:none;border:0;color:inherit;font:inherit;text-align:left;padding:20px;display:flex;gap:16px;align-items:center;cursor:pointer;min-height:72px}
+.mod .num{font-size:1.9rem;font-weight:900;color:transparent;-webkit-text-stroke:1.5px var(--accent);min-width:48px}
+.mod h3{font-size:1.1rem}
+.mod small{color:var(--muted);display:block;font-size:.85rem}
+.mod .plus{margin-left:auto;font-size:1.6rem;color:var(--accent);transition:transform .3s}
+.mod.open .plus{transform:rotate(45deg)}
+.mod .body{max-height:0;overflow:hidden;transition:max-height .4s ease}
+.mod .inner{padding:0 20px 22px 20px;color:var(--muted);font-size:.95rem}
+.mod ul{list-style:none;margin:10px 0 14px}
+.mod li{padding:6px 0 6px 26px;position:relative}
+.mod li::before{content:"✓";position:absolute;left:0;color:var(--accent3);font-weight:800}
+.deliver{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(255,210,63,.12);color:var(--accent);font-size:.8rem;font-weight:700}
+
+/* calc */
+.calc{display:grid;gap:24px;margin-top:36px}
+.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+.field{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0}
+.field label{color:var(--muted);font-size:.92rem}
+.field input{width:120px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--txt);font-size:16px;text-align:right}
+.field input:focus{outline:2px solid var(--accent2)}
+.res .big{font-size:2.6rem;font-weight:900}
+.res .pos{color:var(--accent3)}.res .neg{color:#ff6b6b}
+.kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
+.kpi{background:var(--bg);border-radius:14px;padding:14px;border:1px solid var(--line)}
+.kpi span{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
+.kpi b{display:block;font-size:1.3rem}
+.bar{height:12px;border-radius:99px;background:var(--bg);overflow:hidden;margin-top:18px;border:1px solid var(--line)}
+.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent3),var(--accent));transition:width .5s}
+.note{font-size:.78rem;color:var(--muted);margin-top:12px}
+
+/* timeline */
+.tl{margin-top:36px;display:grid;gap:16px;position:relative}
+.tl-item{padding:22px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line);position:relative}
+.tl-item .d{display:inline-block;padding:4px 12px;border-radius:999px;background:var(--accent2);font-size:.78rem;font-weight:700;margin-bottom:10px}
+.tl-item h3{margin-bottom:6px}.tl-item p{color:var(--muted);font-size:.93rem}
+
+/* glossary */
+.gloss{display:grid;gap:12px;margin-top:36px}
+.g{padding:18px 20px;border-radius:16px;border:1px solid var(--line);background:var(--card)}
+.g b{color:var(--accent)}.g p{color:var(--muted);font-size:.92rem;margin-top:4px}
+
+/* cta */
+.final{text-align:center}
+.final .box{padding:48px 24px;border-radius:30px;background:linear-gradient(135deg,#2a1c7a,#5b3df0 55%,#ff7a59);position:relative;overflow:hidden}
+.final h2{margin-bottom:14px}
+.final p{max-width:520px;margin:0 auto 26px;opacity:.9}
+
+footer{padding:36px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem;text-align:center}
+footer p{max-width:640px;margin:8px auto 0}
+
+/* reveal */
+.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
+.rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+
+@media(min-width:760px){
+  .links{display:flex}
+  .hero .wrap{grid-template-columns:1.1fr .9fr;align-items:center}
+  .cycle{grid-template-columns:repeat(5,1fr)}
+  .step{flex-direction:column;text-align:center}
+  .calc{grid-template-columns:1fr 1fr}
+  .tl{grid-template-columns:repeat(2,1fr)}
+  .gloss{grid-template-columns:repeat(2,1fr)}
+  section{padding:96px 0}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <a href="#top" class="logo"><i>L</i> Curso Livre</a>
+    <div class="links"><a href="#metodo">Método</a><a href="#modulos">Módulos</a><a href="#simulador">Simulador</a><a href="#plano">Plano 30 dias</a><a href="#glossario">Glossário</a></div>
+    <a href="#modulos" class="btn btn-primary btn-sm">Começar</a>
+  </div>
+</nav>
+
+<header class="hero" id="top">
+  <div class="wrap">
+    <div class="rv">
+      <span class="badge"><b></b> 7 módulos · 100% prático</span>
+      <h1>Liberte-se do <span class="grad">achismo</span> e venda online com método.</h1>
+      <p class="lead">Do primeiro produto à gestão de crescimento: um passo a passo para montar sua operação de e-commerce no Mercado Livre com números, rotina e decisão. Sem promessa mágica.</p>
+      <div class="cta">
+        <a href="#modulos" class="btn btn-primary">Ver os 7 módulos →</a>
+        <a href="#simulador" class="btn btn-ghost">Testar o simulador</a>
+      </div>
+      <div class="stats">
+        <div class="stat"><strong>7</strong><span>módulos</span></div>
+        <div class="stat"><strong>30</strong><span>dias de plano</span></div>
+        <div class="stat"><strong>90</strong><span>dias de escala</span></div>
+      </div>
+    </div>
+    <div class="visual rv">
+      <div class="chip a">📦 Produto validado</div>
+      <div class="mock">
+        <h4>Conta por unidade</h4>
+        <div class="row"><span>Preço de venda</span><b>R$ 169,90</b></div>
+        <div class="row"><span>Custo do produto</span><b>− R$ 72,00</b></div>
+        <div class="row"><span>Tarifa + frete</span><b>− R$ 40,49</b></div>
+        <div class="row"><span>Imposto, embalagem, ads</span><b>− R$ 28,49</b></div>
+        <div class="total"><span>Contribuição</span><span>R$ 28,92</span></div>
+      </div>
+      <div class="chip b">📈 ROAS 5,0</div>
+    </div>
+  </div>
+</header>
+
+<div class="marquee" aria-hidden="true"><div>
+  <span>Pesquisa de produtos</span><span>Anúncios que vendem</span><span>Precificação</span><span>Logística</span><span>Publicidade</span><span>Escala com controle</span><span>Capital de giro</span>
+  <span>Pesquisa de produtos</span><span>Anúncios que vendem</span><span>Precificação</span><span>Logística</span><span>Publicidade</span><span>Escala com controle</span><span>Capital de giro</span>
+</div></div>
+
+<section id="metodo">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">O método</span>
+      <h2>Vender é só uma parte do processo.</h2>
+      <p class="lead">Uma operação saudável conecta cinco atividades e protege a margem e o caixa ao mesmo tempo.</p>
+    </div>
+    <div class="cycle">
+      <div class="step rv"><em>🔎</em><div><b>Pesquisa</b><small>escolher a oferta</small></div></div>
+      <div class="step rv"><em>🛒</em><div><b>Compra</b><small>custo posto no estoque</small></div></div>
+      <div class="step rv"><em>🏷️</em><div><b>Anúncio</b><small>clareza que converte</small></div></div>
+      <div class="step rv"><em>🚚</em><div><b>Envio</b><small>prazo e qualidade</small></div></div>
+      <div class="step rv"><em>📊</em><div><b>Análise</b><small>medir e decidir</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="modulos" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Conteúdo</span>
+      <h2>Os 7 módulos</h2>
+      <p class="lead">Estude um por vez, execute as atividades e registre os resultados. Toque num módulo para abrir.</p>
+    </div>
+    <div class="mods" id="mods"></div>
+  </div>
+</section>
+
+<section id="simulador">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Módulo 4 na prática</span>
+      <h2>Simulador de lucro por unidade</h2>
+      <p class="lead">Faturamento não é lucro. Altere os campos e veja o que realmente sobra de cada venda.</p>
+    </div>
+    <div class="calc">
+      <div class="panel rv" id="inputs"></div>
+      <div class="panel res rv">
+        <span class="eyebrow">Contribuição por unidade</span>
+        <div class="big" id="contrib">R$ 0,00</div>
+        <div class="kpis">
+          <div class="kpi"><span>Margem</span><b id="margem">0%</b></div>
+          <div class="kpi"><span>ACOS</span><b id="acos">0%</b></div>
+          <div class="kpi"><span>ROAS</span><b id="roas">0</b></div>
+          <div class="kpi"><span>Equilíbrio (custo fixo R$ 1.000)</span><b id="pe">—</b></div>
+        </div>
+        <div class="bar"><i id="barfill"></i></div>
+        <p class="note">Valores ilustrativos e fictícios. Use as tarifas e impostos reais da sua operação.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="plano" style="background:var(--bg2)">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Roteiro</span>
+      <h2>Plano inicial de 30 dias</h2>
+      <p class="lead">Cada etapa termina com uma evidência de conclusão. Sem evidência, não avança.</p>
+    </div>
+    <div class="tl">
+      <div class="tl-item rv"><span class="d">Dias 1–7</span><h3>Estudar</h3><p>Categoria, público e regras. Entrega: resumo de 1 página e lista de dúvidas.</p></div>
+      <div class="tl-item rv"><span class="d">Dias 8–14</span><h3>Comparar</h3><p>10 produtos e fornecedores. Entrega: matriz preenchida com custos estimados.</p></div>
+      <div class="tl-item rv"><span class="d">Dias 15–21</span><h3>Montar o teste</h3><p>Escolher um teste pequeno e criar o anúncio. Entrega: anúncio revisado antes de publicar.</p></div>
+      <div class="tl-item rv"><span class="d">Dias 22–30</span><h3>Acompanhar</h3><p>Visitas, perguntas, pedidos e margem. Entrega: relatório semanal e decisões registradas.</p></div>
+    </div>
+  </div>
+</section>
+
+<section id="glossario">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Vocabulário</span>
+      <h2>Glossário essencial</h2>
+    </div>
+    <div class="gloss">
+      <div class="g rv"><b>Faturamento</b><p>Valor total das vendas antes de descontar custos e despesas.</p></div>
+      <div class="g rv"><b>Margem de contribuição</b><p>O que sobra da venda após custos variáveis; ajuda a pagar custos fixos e gerar lucro.</p></div>
+      <div class="g rv"><b>ACOS</b><p>Gasto com publicidade dividido pela receita atribuída a ela, em percentual.</p></div>
+      <div class="g rv"><b>ROAS</b><p>Receita atribuída à publicidade dividida pelo gasto com publicidade.</p></div>
+      <div class="g rv"><b>Capital de giro</b><p>Dinheiro para financiar estoque, prazos de recebimento e despesas.</p></div>
+      <div class="g rv"><b>Conversão</b><p>Proporção de visitas que viram pedidos, conforme a métrica usada.</p></div>
+    </div>
+  </div>
+</section>
+
+<section class="final">
+  <div class="wrap rv">
+    <div class="box">
+      <h2>Pronto para sair da ideia vaga?</h2>
+      <p>Escolha um produto de teste e execute o ciclo completo: pesquisar, calcular, anunciar, entregar, medir e decidir.</p>
+      <a href="#modulos" class="btn btn-primary">Começar pelo Módulo 1</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <b>Curso Livre</b> · Material educacional
+    <p>Este curso não é afiliado, patrocinado ou aprovado pelo Mercado Livre. Marcas pertencem a seus titulares. O material não substitui orientação contábil, jurídica ou tributária. Resultados variam e nenhum faturamento ou lucro é garantido.</p>
+  </div>
+</footer>
+
+<script>
+const modules=[
+ {t:"Começando do zero",s:"Plano realista com orçamento e metas",items:["Como funciona uma operação de e-commerce","Começar pequeno, mas com controle","Pessoa física, CNPJ e obrigações","Plano inicial de 30 dias"],d:"Plano inicial de 30 dias"},
+ {t:"Pesquisa de produtos e fornecedores",s:"Escolher com evidências, não com gosto",items:["Demanda, concorrência e economia unitária","Matriz de avaliação com pesos","Como analisar concorrentes","Como avaliar fornecedores"],d:"Matriz de seleção"},
+ {t:"Anúncios que ajudam a vender",s:"Clareza que reduz dúvidas e devoluções",items:["O anúncio como página de decisão","Estrutura de um bom título","Imagens e ficha técnica","Checklist de publicação"],d:"Checklist de anúncio"},
+ {t:"Precificação, margem e lucro",s:"O que realmente sobra de cada venda",items:["Faturamento não é lucro","Conta por unidade","ACOS, ROAS e ponto de equilíbrio","Decisões de preço"],d:"Planilha de lucro por unidade"},
+ {t:"Logística, estoque e atendimento",s:"Rotina repetível, menos erros e atrasos",items:["O fluxo do pedido","Controle de estoque","Atendimento e reputação","Rotina diária, semanal e mensal"],d:"Checklist operacional"},
+ {t:"Publicidade e otimização",s:"Anúncios patrocinados com hipóteses mensuráveis",items:["Antes de anunciar","Métricas básicas","Exemplo de ACOS e ROAS","Plano de teste com regras de pausa"],d:"Painel de métricas"},
+ {t:"Escala, caixa e profissionalização",s:"Crescer com processo e capital de giro",items:["Crescer com controle","Reinvestimento e capital de giro","Painel semanal de gestão","Plano de crescimento em 90 dias"],d:"Plano de crescimento"}
+];
+const mods=document.getElementById('mods');
+modules.forEach((m,i)=>{
+  const el=document.createElement('div');el.className='mod rv';
+  el.innerHTML=`<button aria-expanded="false"><span class="num">${i+1}</span><span><h3>${m.t}</h3><small>${m.s}</small></span><span class="plus">+</span></button>
+  <div class="body"><div class="inner"><ul>${m.items.map(x=>`<li>${x}</li>`).join('')}</ul><span class="deliver">Entregável: ${m.d}</span></div></div>`;
+  const b=el.querySelector('button'),body=el.querySelector('.body');
+  b.onclick=()=>{
+    const open=el.classList.toggle('open');
+    b.setAttribute('aria-expanded',open);
+    body.style.maxHeight=open?body.scrollHeight+'px':0;
+  };
+  mods.appendChild(el);
+});
+
+const fields=[["Preço de venda",169.9],["Custo do produto",72],["Tarifa do marketplace",25.49],["Frete / subsídio",15],["Embalagem e operação",3],["Imposto estimado",8.5],["Publicidade atribuída",16.99]];
+const box=document.getElementById('inputs');
+fields.forEach(([l,v],i)=>{
+  box.insertAdjacentHTML('beforeend',`<div class="field"><label for="f${i}">${l} (R$)</label><input id="f${i}" type="number" inputmode="decimal" step="0.01" value="${v}"></div>`);
+});
+const brl=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
+function calc(){
+  const v=fields.map((_,i)=>parseFloat(document.getElementById('f'+i).value)||0);
+  const [price,...costs]=v, total=costs.reduce((a,b)=>a+b,0), c=price-total, ads=v[6];
+  const m=price?c/price*100:0;
+  const el=document.getElementById('contrib');
+  el.textContent=brl(c);el.className='big '+(c>=0?'pos':'neg');
+  document.getElementById('margem').textContent=m.toFixed(1).replace('.',',')+'%';
+  document.getElementById('acos').textContent=price?(ads/price*100).toFixed(1).replace('.',',')+'%':'—';
+  document.getElementById('roas').textContent=ads?(price/ads).toFixed(1).replace('.',','):'—';
+  document.getElementById('pe').textContent=c>0?Math.ceil(1000/c)+' un.':'inviável';
+  document.getElementById('barfill').style.width=Math.max(0,Math.min(100,m*3))+'%';
+}
+box.addEventListener('input',calc);calc();
+
+const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
+document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+</script>
+</body>
+</html>
