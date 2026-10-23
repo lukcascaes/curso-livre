@@ -61,8 +61,8 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 
 /* hero visual */
 .visual{position:relative;padding-bottom:36px}
-.photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:30px;display:block;border:1px solid var(--line);box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
-.visual .mock{position:absolute;left:14px;bottom:0;width:min(82%,330px);padding:18px}
+.photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:62% center;border-radius:30px;display:block;border:1px solid var(--line);box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+.visual .mock{position:relative;margin:-70px 14px 0;padding:18px;animation:none}
 .visual .chip.a{top:16px;left:16px}.visual .chip.b{top:16px;bottom:auto;right:16px}
 .mock{width:min(100%,380px);background:linear-gradient(160deg,var(--card),#0f1530);border:1px solid var(--line);border-radius:26px;padding:22px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7);animation:float 6s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-12px)}}
@@ -157,7 +157,11 @@ footer p{max-width:640px;margin:8px auto 0}
 
 @media(min-width:760px){
   .gal{grid-template-columns:repeat(3,1fr)}.gc.tall{grid-row:span 2}.gc{min-height:240px}
-  .photo{aspect-ratio:1/1.05}
+  .photo{aspect-ratio:4/5}
+  .visual{padding-bottom:0}
+  .visual .mock{position:absolute;left:-64px;bottom:-28px;margin:0;width:280px;padding:16px;font-size:.92rem;animation:float 6s ease-in-out infinite}
+  .visual .mock .row{padding:7px 0;font-size:.82rem}
+  .visual .mock .total span:last-child{font-size:1.15rem}
   .links{display:flex}
   .hero .wrap{grid-template-columns:1.1fr .9fr;align-items:center}
   .cycle{grid-template-columns:repeat(5,1fr)}
