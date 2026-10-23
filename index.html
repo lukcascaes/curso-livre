@@ -525,12 +525,14 @@ tabs.forEach(([t,p]) => $(t).onclick = () => tabs.forEach(([a,b]) => {
 }));
 
 /* simulador */
-const fields = [["Preço de venda",169.9],["Custo do produto",72],["Tarifa do marketplace",25.49],["Frete / subsídio",15],["Embalagem e operação",3],["Imposto estimado",8.5],["Publicidade atribuída",16.99]];
-fields.forEach(([l,v],i) => $("inputs").insertAdjacentHTML("beforeend", `<div class="field"><label for="f${i}">${l} (R$)</label><input id="f${i}" type="number" inputmode="decimal" step="0.01" value="${v}"></div>`));
+const fields = [["Preço de venda",169.9,"R$"],["Custo do produto",72,"R$"],["Tarifa do marketplace",15,"%"],["Frete / subsídio",15,"R$"],["Embalagem e operação",3,"R$"],["Imposto estimado",5,"%"],["Publicidade atribuída",10,"%"]];
+fields.forEach(([l,v,u],i) => $("inputs").insertAdjacentHTML("beforeend", `<div class="field"><label for="f${i}">${l} (${u})</label><input id="f${i}" type="number" inputmode="decimal" step="0.01" value="${v}"></div>`));
 const brl = n => n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
 function calc(){
-  const v = fields.map((_,i) => parseFloat($("f"+i).value) || 0);
-  const price = v[0], c = price - v.slice(1).reduce((a,b) => a+b, 0), ads = v[6];
+  const raw = fields.map((_,i) => parseFloat($("f"+i).value) || 0);
+  const price = raw[0];
+  const v = raw.map((x,i) => fields[i][2] === "%" ? price*x/100 : x);
+  const c = price - v.slice(1).reduce((a,b) => a+b, 0), ads = v[6];
   const m = price ? c/price*100 : 0;
   $("contrib").textContent = brl(c);
   $("contrib").className = "big " + (c >= 0 ? "pos" : "neg");
