@@ -4,6 +4,10 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="theme-color" content="#0b1020">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
+<meta property="og:title" content="Curso Livre — Venda online com método"><meta property="og:image" content="img/p6.jpg">
 <title>Curso Livre — Venda online com método</title>
 <meta name="description" content="Curso Livre: 7 módulos práticos para estruturar sua operação de e-commerce, da pesquisa de produto à gestão de crescimento.">
 <style>
@@ -14,12 +18,12 @@
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,Inter,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;
+body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;
   padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
 a{color:inherit;text-decoration:none}
 .wrap{width:min(1120px,100% - 40px);margin-inline:auto}
 section{padding:72px 0;position:relative}
-h1,h2,h3{line-height:1.15;letter-spacing:-.02em}
+h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;line-height:1.1;letter-spacing:-.02em}
 h2{font-size:clamp(1.7rem,5vw,2.6rem);margin-bottom:12px}
 .eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
 .lead{color:var(--muted);font-size:1.05rem;max-width:620px}
@@ -29,7 +33,7 @@ h2{font-size:clamp(1.7rem,5vw,2.6rem);margin-bottom:12px}
 nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(11,16,32,.72);border-bottom:1px solid rgba(255,255,255,.06);padding-top:env(safe-area-inset-top)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
 .logo{font-weight:800;font-size:1.15rem;display:flex;align-items:center;gap:8px}
-.logo i{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,var(--accent),var(--accent2));display:grid;place-items:center;font-style:normal;color:#0b1020;font-size:.95rem}
+.logo img{width:30px;height:30px;border-radius:9px}
 .links{display:none;gap:26px;font-size:.92rem;color:var(--muted)}
 .links a:hover{color:var(--txt)}
 .btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:1rem;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s;min-height:48px}
@@ -56,7 +60,10 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .stat span{font-size:.78rem;color:var(--muted)}
 
 /* hero visual */
-.visual{position:relative;min-height:340px;display:grid;place-items:center}
+.visual{position:relative;padding-bottom:36px}
+.photo{width:100%;aspect-ratio:4/5;object-fit:cover;border-radius:30px;display:block;border:1px solid var(--line);box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
+.visual .mock{position:absolute;left:14px;bottom:0;width:min(82%,330px);padding:18px}
+.visual .chip.a{top:16px;left:16px}.visual .chip.b{top:16px;bottom:auto;right:16px}
 .mock{width:min(100%,380px);background:linear-gradient(160deg,var(--card),#0f1530);border:1px solid var(--line);border-radius:26px;padding:22px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7);animation:float 6s ease-in-out infinite}
 @keyframes float{50%{transform:translateY(-12px)}}
 .mock .row{display:flex;justify-content:space-between;font-size:.88rem;padding:9px 0;border-bottom:1px dashed var(--line);color:var(--muted)}
@@ -126,9 +133,17 @@ nav .wrap{display:flex;align-items:center;justify-content:space-between;height:6
 .g{padding:18px 20px;border-radius:16px;border:1px solid var(--line);background:var(--card)}
 .g b{color:var(--accent)}.g p{color:var(--muted);font-size:.92rem;margin-top:4px}
 
+/* gallery */
+.gal{display:grid;gap:16px;margin-top:36px}
+.gc{position:relative;border-radius:var(--radius);overflow:hidden;min-height:260px;border:1px solid var(--line)}
+.gc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
+.gc:hover img{transform:scale(1.06)}
+.gc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(11,16,32,.92))}
+.gc div{position:absolute;left:20px;right:20px;bottom:18px;z-index:1}
+.gc b{font-family:"Space Grotesk";font-size:1.25rem;display:block}.gc span{font-size:.88rem;color:#cfd5f5}
 /* cta */
 .final{text-align:center}
-.final .box{padding:48px 24px;border-radius:30px;background:linear-gradient(135deg,#2a1c7a,#5b3df0 55%,#ff7a59);position:relative;overflow:hidden}
+.final .box{padding:64px 24px;border-radius:30px;background:linear-gradient(135deg,rgba(42,28,122,.9),rgba(91,61,240,.82) 55%,rgba(255,122,89,.8)),url(img/p7.jpg) center/cover;position:relative;overflow:hidden}
 .final h2{margin-bottom:14px}
 .final p{max-width:520px;margin:0 auto 26px;opacity:.9}
 
@@ -141,6 +156,8 @@ footer p{max-width:640px;margin:8px auto 0}
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
 
 @media(min-width:760px){
+  .gal{grid-template-columns:repeat(3,1fr)}.gc.tall{grid-row:span 2}.gc{min-height:240px}
+  .photo{aspect-ratio:1/1.05}
   .links{display:flex}
   .hero .wrap{grid-template-columns:1.1fr .9fr;align-items:center}
   .cycle{grid-template-columns:repeat(5,1fr)}
@@ -156,7 +173,7 @@ footer p{max-width:640px;margin:8px auto 0}
 
 <nav>
   <div class="wrap">
-    <a href="#top" class="logo"><i>L</i> Curso Livre</a>
+    <a href="#top" class="logo"><img src="favicon.svg" alt=""> Curso Livre</a>
     <div class="links"><a href="#metodo">Método</a><a href="#modulos">Módulos</a><a href="#simulador">Simulador</a><a href="#plano">Plano 30 dias</a><a href="#glossario">Glossário</a></div>
     <a href="#modulos" class="btn btn-primary btn-sm">Começar</a>
   </div>
@@ -179,6 +196,7 @@ footer p{max-width:640px;margin:8px auto 0}
       </div>
     </div>
     <div class="visual rv">
+      <img class="photo" src="img/p6.jpg" alt="Empreendedora atendendo cliente no balcão" fetchpriority="high">
       <div class="chip a">📦 Produto validado</div>
       <div class="mock">
         <h4>Conta por unidade</h4>
@@ -211,6 +229,23 @@ footer p{max-width:640px;margin:8px auto 0}
       <div class="step rv"><em>🏷️</em><div><b>Anúncio</b><small>clareza que converte</small></div></div>
       <div class="step rv"><em>🚚</em><div><b>Envio</b><small>prazo e qualidade</small></div></div>
       <div class="step rv"><em>📊</em><div><b>Análise</b><small>medir e decidir</small></div></div>
+    </div>
+  </div>
+</section>
+
+<section id="pratica" style="padding-top:0">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Na prática</span>
+      <h2>Da prateleira ao cliente</h2>
+      <p class="lead">Pesquisa, estoque, atendimento e números: tudo o que acontece por trás de cada venda.</p>
+    </div>
+    <div class="gal">
+      <div class="gc tall rv"><img loading="lazy" src="img/p2.jpg" alt="Corredor de armazém"><div><b>Estoque sob controle</b><span>Entradas, saídas e reposição</span></div></div>
+      <div class="gc rv"><img loading="lazy" src="img/p4.jpg" alt="Notebook com painel de métricas"><div><b>Métricas que importam</b><span>ACOS, ROAS e margem</span></div></div>
+      <div class="gc rv"><img loading="lazy" src="img/p5.jpg" alt="Galpão logístico"><div><b>Logística organizada</b><span>Separar, embalar, despachar</span></div></div>
+      <div class="gc rv"><img loading="lazy" src="img/p3.jpg" alt="Vendedor atendendo cliente"><div><b>Atendimento e reputação</b><span>Clareza gera confiança</span></div></div>
+      <div class="gc rv"><img loading="lazy" src="img/p1.jpg" alt="Sacolas de compras"><div><b>Oferta bem apresentada</b><span>Anúncio é página de decisão</span></div></div>
     </div>
   </div>
 </section>
