@@ -196,19 +196,39 @@ footer b{color:#fff}footer p{max-width:660px;margin:8px auto 0}
 }
 @media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
 
-/* botão gigante de latidos */
-.bark{min-height:calc(100svh - 64px);display:grid;place-items:center;text-align:center;padding:32px 0;overflow:hidden;position:relative;background:radial-gradient(circle at 50% 45%,#ffe3c4 0,var(--bg) 70%)}
-.bark h2{font-size:clamp(1.4rem,5vw,2.2rem);margin-bottom:6px}
-.bark p{color:var(--muted);margin-bottom:28px}
-#barkBtn{width:min(72vw,340px);aspect-ratio:1;border-radius:50%;border:0;cursor:pointer;font-family:inherit;color:#26242a;background:radial-gradient(circle at 35% 30%,#ffb56b,var(--amber) 55%,var(--amber-dk));box-shadow:0 0 0 10px rgba(240,122,18,.18),0 30px 60px -20px rgba(217,106,8,.7),inset 0 -10px 20px rgba(0,0,0,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:transform .12s;animation:beat 2.2s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
-#barkBtn:active,#barkBtn.hit{transform:scale(.92);animation:none}
-#barkBtn .e{font-size:clamp(4rem,22vw,7rem);line-height:1}
-#barkBtn .t{font-weight:800;font-size:clamp(1.1rem,4.5vw,1.6rem);letter-spacing:.06em}
-@keyframes beat{50%{transform:scale(1.04)}}
-#barkCount{margin-top:22px;font-weight:600;color:var(--teal-mid);min-height:1.6em}
-.dog{position:fixed;top:-80px;z-index:200;pointer-events:none;font-size:2.4rem;animation:drop linear forwards;will-change:transform}
-@keyframes drop{to{transform:translateY(calc(100vh + 140px)) rotate(var(--rot))}}
-@media (prefers-reduced-motion:reduce){#barkBtn{animation:none!important}}
+
+/* oferta + checkout (rascunho) */
+.offer{display:grid;gap:22px;margin-top:34px}
+.incl{list-style:none}
+.incl li{padding:9px 0 9px 30px;position:relative;border-bottom:1px dashed var(--line)}
+.incl li::before{content:"✓";position:absolute;left:0;color:#2e7d32;font-weight:800}
+.pricecard{background:var(--surface);border:2px solid var(--amber);border-radius:24px;padding:28px;box-shadow:var(--shadow);text-align:center;position:relative}
+.tag{display:inline-block;padding:4px 12px;border-radius:999px;background:#fdf0d2;color:#7a4a00;font-size:.74rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.price{font-family:Fraunces,serif;font-weight:700;font-size:3.2rem;line-height:1.1;color:var(--teal-dk);margin:14px 0 4px}
+.price small{font-size:1rem;font-family:Inter,sans-serif;color:var(--muted);font-weight:500}
+.pricecard .btn{width:100%;margin-top:18px}
+.pricecard p.fine{font-size:.8rem;color:var(--muted);margin-top:12px}
+dialog#checkout{border:0;border-radius:22px;padding:0;width:calc(100% - 32px);max-width:460px;margin:auto;color:var(--ink);background:var(--bg);box-shadow:0 30px 80px -20px rgba(0,0,0,.5)}
+dialog#checkout::backdrop{background:rgba(38,36,42,.62);backdrop-filter:blur(3px)}
+.ck-head{display:flex;justify-content:space-between;align-items:center;padding:18px 22px;border-bottom:1px solid var(--line)}
+.ck-head h3{font-size:1.25rem}
+.ck-x{border:0;background:transparent;font-size:1.8rem;line-height:1;cursor:pointer;color:var(--muted);width:44px;height:44px;border-radius:12px}
+.ck-body{padding:20px 22px 24px}
+.sum{background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:14px 16px}
+.sum .r{display:flex;justify-content:space-between;gap:10px;padding:6px 0;font-size:.95rem}
+.sum .tot{border-top:1px dashed var(--line);margin-top:6px;padding-top:12px;font-weight:800;font-size:1.1rem}
+.ck-body h4{margin:20px 0 10px;font-size:.78rem;text-transform:uppercase;letter-spacing:.1em;color:var(--teal-mid)}
+.pay{display:flex;align-items:center;gap:12px;padding:14px 16px;border:2px solid var(--line);border-radius:14px;background:var(--surface);cursor:pointer;margin-bottom:10px;min-height:60px}
+.pay.sel{border-color:var(--amber);background:#fff6ea}
+.pay input{accent-color:var(--amber-dk);width:20px;height:20px}
+.pay b{display:block}.pay small{color:var(--muted);font-size:.8rem}
+.pay .ic{font-size:1.4rem}
+.ck-body .btn{width:100%;margin-top:8px}
+.ck-note{font-size:.78rem;color:var(--muted);margin-top:12px;text-align:center}
+.ck-done{display:none;text-align:center;padding:10px 4px}
+.ck-done .big{font-size:2.6rem}
+dialog.done .ck-flow{display:none}dialog.done .ck-done{display:block}
+@media(min-width:760px){.offer{grid-template-columns:1.1fr .9fr;align-items:center;gap:48px}}
 </style>
 </head>
 <body>
@@ -218,22 +238,13 @@ footer b{color:#fff}footer p{max-width:660px;margin:8px auto 0}
   <div class="wrap">
     <a href="#top" class="logo"><img src="img/logo.png" alt="" width="36" height="36"> Dog Livre</a>
     <nav class="links" aria-label="Seções">
-      <a href="#resultado">O que você leva</a><a href="#modulos">Módulos</a><a href="#ferramentas">Ferramentas</a><a href="#plano">Plano de 30 dias</a><a href="#faq">Dúvidas</a>
+      <a href="#resultado">O que você leva</a><a href="#modulos">Módulos</a><a href="#ferramentas">Ferramentas</a><a href="#plano">Plano de 30 dias</a><a href="#oferta">Inscrição</a><a href="#faq">Dúvidas</a>
     </nav>
-    <a href="#modulos" class="btn btn-primary btn-sm">Ver módulos</a>
+    <a href="#oferta" class="btn btn-primary btn-sm">Quero o curso</a>
   </div>
 </header>
 
 <main id="top">
-<section class="bark" aria-label="Botão de latidos">
-  <div class="wrap">
-    <h2>Pronto pra soltar a matilha?</h2>
-    <p>Aperte o botão (com o som ligado).</p>
-    <button id="barkBtn" type="button" aria-label="Soltar cachorros"><span class="e">🐶</span><span class="t">APERTE</span></button>
-    <div id="barkCount" aria-live="polite"></div>
-  </div>
-</section>
-
 <section class="hero">
   <div class="wrap">
     <div class="rv">
@@ -241,8 +252,8 @@ footer b{color:#fff}footer p{max-width:660px;margin:8px auto 0}
       <h1>Pare de adivinhar. Venda online com <em>método e números</em>.</h1>
       <p class="lead">Um passo a passo para estruturar sua operação de e-commerce no Mercado Livre: escolher produto, montar o anúncio, calcular o lucro de cada venda e crescer com controle de caixa.</p>
       <div class="cta">
-        <a href="#modulos" class="btn btn-primary">Ver os 7 módulos</a>
-        <a href="#ferramentas" class="btn btn-ghost">Testar o simulador</a>
+        <a href="#oferta" class="btn btn-primary">Quero me inscrever</a>
+        <a href="#modulos" class="btn btn-ghost">Ver os 7 módulos</a>
       </div>
       <ul class="trust">
         <li>Sem promessa de ganho fácil</li><li>Planilhas e checklists</li><li>Estude no seu ritmo</li>
@@ -368,6 +379,32 @@ footer b{color:#fff}footer p{max-width:660px;margin:8px auto 0}
   </div>
 </section>
 
+<section id="oferta">
+  <div class="wrap">
+    <div class="rv">
+      <span class="eyebrow">Inscrição</span>
+      <h2>Comece hoje, no seu ritmo</h2>
+      <p class="lead">Um único curso, do zero ao plano de crescimento, com material para colocar em prática desde o primeiro módulo.</p>
+    </div>
+    <div class="offer">
+      <ul class="incl rv">
+        <li>7 módulos práticos, do primeiro produto à escala</li>
+        <li>7 entregáveis: plano de 30 dias, matrizes, checklists e painel</li>
+        <li>Planilhas de lucro por unidade e de pesquisa de produtos</li>
+        <li>Roteiros de análise de produto e reunião semanal</li>
+        <li>Estude um módulo por vez, no seu ritmo</li>
+      </ul>
+      <div class="pricecard rv">
+        <span class="tag">Rascunho · valor de exemplo</span>
+        <div class="price"><span id="price">R$ 0</span></div>
+        <small style="color:var(--muted)">valor a definir</small>
+        <button class="btn btn-primary" type="button" id="openCk">Ir para o pagamento</button>
+        <p class="fine">Compras online têm 7 dias para desistência (Código de Defesa do Consumidor, art. 49).</p>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section id="glossario">
   <div class="wrap">
     <div class="rv"><span class="eyebrow">Vocabulário</span><h2>Glossário essencial</h2></div>
@@ -389,6 +426,7 @@ footer b{color:#fff}footer p{max-width:660px;margin:8px auto 0}
       <details><summary>O curso garante faturamento ou lucro?</summary><p>Não. O objetivo é desenvolver método e capacidade de decisão. Resultados variam conforme produto, capital, execução, concorrência e mercado.</p></details>
       <details><summary>Preciso de CNPJ para começar?</summary><p>Depende da atividade, do volume e das regras fiscais. O Módulo 1 explica o que observar, mas confirme com um contador o enquadramento e as obrigações antes de vender de forma recorrente.</p></details>
       <details><summary>Quanto preciso investir?</summary><p>O curso ajuda você a definir o quanto pode investir sem comprometer despesas essenciais e a estabelecer um limite de perda para o teste inicial.</p></details>
+      <details><summary>Como funciona o pagamento?</summary><p>Você escolhe a forma de pagamento (Pix, cartão ou boleto) na tela de inscrição. Detalhes de parcelamento e prazo de acesso serão confirmados antes da abertura das vendas.</p></details>
       <details><summary>As tarifas do exemplo são oficiais?</summary><p>Não. Os números são ilustrativos. Tarifas, regras e logística do Mercado Livre mudam, então confira sempre os valores vigentes nos canais oficiais.</p></details>
       <details><summary>Este curso é do Mercado Livre?</summary><p>Não. Ele não é afiliado, patrocinado ou aprovado pelo Mercado Livre. Nomes de serviços e marcas pertencem a seus titulares.</p></details>
     </div>
@@ -399,7 +437,7 @@ footer b{color:#fff}footer p{max-width:660px;margin:8px auto 0}
   <div class="wrap rv">
     <h2>Pronto para sair da ideia vaga?</h2>
     <p>Escolha um produto de teste e execute o ciclo completo: pesquisar, calcular, anunciar, entregar, medir e decidir.</p>
-    <a href="#modulos" class="btn btn-primary">Começar pelo Módulo 1</a>
+    <a href="#oferta" class="btn btn-primary">Quero me inscrever</a>
   </div>
 </section>
 </main>
@@ -411,7 +449,33 @@ footer b{color:#fff}footer p{max-width:660px;margin:8px auto 0}
   </div>
 </footer>
 
-<div class="sticky" id="sticky"><a href="#modulos" class="btn btn-primary">Ver os 7 módulos</a></div>
+<div class="sticky" id="sticky"><a href="#oferta" class="btn btn-primary">Quero me inscrever</a></div>
+
+<dialog id="checkout" aria-labelledby="ckTitle">
+  <div class="ck-head"><h3 id="ckTitle">Finalizar inscrição</h3><button class="ck-x" type="button" id="closeCk" aria-label="Fechar">×</button></div>
+  <div class="ck-body">
+    <div class="ck-flow">
+      <span class="tag">Rascunho da tela de pagamento</span>
+      <h4>Resumo do pedido</h4>
+      <div class="sum">
+        <div class="r"><span>Dog Livre — curso completo (7 módulos)</span><b id="sumPrice">R$ 0</b></div>
+        <div class="r tot"><span>Total</span><span id="sumTotal">R$ 0</span></div>
+      </div>
+      <h4>Forma de pagamento</h4>
+      <label class="pay sel"><input type="radio" name="pay" value="pix" checked><span class="ic">⚡</span><span><b>Pix</b><small>Confirmação em instantes</small></span></label>
+      <label class="pay"><input type="radio" name="pay" value="card"><span class="ic">💳</span><span><b>Cartão de crédito</b><small>Parcelamento a definir</small></span></label>
+      <label class="pay"><input type="radio" name="pay" value="boleto"><span class="ic">🧾</span><span><b>Boleto bancário</b><small>Compensação em até 3 dias úteis</small></span></label>
+      <button class="btn btn-primary" type="button" id="finishCk">Finalizar compra</button>
+      <p class="ck-note">Nenhum dado é coletado nesta tela. O pagamento real será feito em um provedor seguro (a definir).</p>
+    </div>
+    <div class="ck-done">
+      <div class="big">🛠️</div>
+      <h3 style="margin:8px 0">Isto é só um rascunho</h3>
+      <p style="color:var(--muted)">O pagamento ainda não foi integrado. Nada foi cobrado e nenhum dado foi coletado.</p>
+      <button class="btn btn-ghost" type="button" id="backCk" style="margin-top:16px">Voltar</button>
+    </div>
+  </div>
+</dialog>
 
 <script>
 const $ = id => document.getElementById(id);
@@ -503,63 +567,21 @@ addEventListener("scroll", () => {
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.1});
 document.querySelectorAll(".rv").forEach(el => io.observe(el));
 
-/* botão de latidos: som sintetizado (Web Audio), sem arquivo de áudio */
-let actx, barks = 0;
-function bark(at, pitch, len){
-  const t0 = actx.currentTime + at;
-  const o = actx.createOscillator(), o2 = actx.createOscillator(), g = actx.createGain();
-  const f1 = actx.createBiquadFilter(), f2 = actx.createBiquadFilter();
-  o.type = "sawtooth"; o2.type = "square";
-  o.frequency.setValueAtTime(pitch * 1.5, t0);
-  o.frequency.exponentialRampToValueAtTime(pitch * .8, t0 + len);
-  o2.frequency.setValueAtTime(pitch * 1.52, t0);
-  o2.frequency.exponentialRampToValueAtTime(pitch * .78, t0 + len);
-  f1.type = "bandpass"; f1.frequency.value = 700; f1.Q.value = 3;
-  f2.type = "bandpass"; f2.frequency.value = 1800; f2.Q.value = 4;
-  g.gain.setValueAtTime(0.0001, t0);
-  g.gain.exponentialRampToValueAtTime(0.9, t0 + 0.015);
-  g.gain.exponentialRampToValueAtTime(0.0001, t0 + len);
-  o.connect(f1); o2.connect(f2); f1.connect(g); f2.connect(g); g.connect(actx.destination);
-  o.start(t0); o2.start(t0); o.stop(t0 + len + .02); o2.stop(t0 + len + .02);
-  /* ruído para o "chiado" do latido */
-  const n = actx.createBuffer(1, actx.sampleRate * len, actx.sampleRate), d = n.getChannelData(0);
-  for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
-  const ns = actx.createBufferSource(), ng = actx.createGain(), nf = actx.createBiquadFilter();
-  ns.buffer = n; nf.type = "bandpass"; nf.frequency.value = 1400; nf.Q.value = .8; ng.gain.value = .35;
-  ns.connect(nf); nf.connect(ng); ng.connect(actx.destination); ns.start(t0);
-}
-function dogs(){
-  const set = ["🐶","🐕","🦮","🐕‍🦺","🐩","🐾"];
-  for (let i = 0; i < 26; i++){
-    const el = document.createElement("span");
-    el.className = "dog"; el.textContent = set[Math.floor(Math.random() * set.length)];
-    el.style.left = Math.random() * 96 + "vw";
-    el.style.fontSize = (1.8 + Math.random() * 2.4) + "rem";
-    el.style.setProperty("--rot", (Math.random() * 720 - 360) + "deg");
-    el.style.animationDuration = (1.6 + Math.random() * 2.2) + "s";
-    el.style.animationDelay = (Math.random() * .7) + "s";
-    document.body.appendChild(el);
-    setTimeout(() => el.remove(), 5000);
-  }
-}
-$("barkBtn").addEventListener("click", () => {
-  try {
-    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
-    actx.resume();
-    const n = 4 + Math.floor(Math.random() * 4);
-    let t = 0;
-    for (let i = 0; i < n; i++){
-      const big = Math.random() < .5;
-      bark(t, big ? 190 + Math.random() * 40 : 300 + Math.random() * 80, big ? .2 : .13);
-      t += .22 + Math.random() * .18;
-    }
-    barks += n;
-  } catch (e) {}
-  dogs();
-  if (navigator.vibrate) navigator.vibrate([60, 40, 60, 40, 60]);
-  const b = $("barkBtn"); b.classList.add("hit"); setTimeout(() => b.classList.remove("hit"), 150);
-  $("barkCount").textContent = "🔊 Latidos soltos: " + barks;
-});
+
+/* oferta e checkout (rascunho): troque o preço aqui quando definir */
+const PRICE = 197;
+const ck = $("checkout");
+$("price").textContent = brl(PRICE).replace(",00", "");
+$("sumPrice").textContent = $("sumTotal").textContent = brl(PRICE);
+$("openCk").onclick = () => { ck.classList.remove("done"); ck.showModal ? ck.showModal() : ck.setAttribute("open", ""); };
+const closeCk = () => ck.close ? ck.close() : ck.removeAttribute("open");
+$("closeCk").onclick = closeCk;
+$("backCk").onclick = closeCk;
+ck.addEventListener("click", e => { if (e.target === ck) closeCk(); });
+document.querySelectorAll(".pay input").forEach(r => r.addEventListener("change", () => {
+  document.querySelectorAll(".pay").forEach(p => p.classList.toggle("sel", p.querySelector("input").checked));
+}));
+$("finishCk").onclick = () => ck.classList.add("done");
 </script>
 </body>
 </html>
