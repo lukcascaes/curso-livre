@@ -3,363 +3,328 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="theme-color" content="#ffe600">
+<meta name="theme-color" content="#0b3f36">
+<title>Lucas Livre — Venda online com método</title>
+<meta name="description" content="Curso prático em 7 módulos para estruturar sua operação de e-commerce: da pesquisa de produto à gestão de crescimento, com planilhas, checklists e simuladores.">
+<meta property="og:title" content="Lucas Livre — Venda online com método">
+<meta property="og:description" content="7 módulos práticos, planilhas e simuladores para vender online com números, não com achismo.">
+<meta property="og:image" content="img/p6.jpg">
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;800;900&family=Space+Grotesk:wght@600;700&display=swap" rel="stylesheet">
-<meta property="og:title" content="Lucas Livre — Venda online com método"><meta property="og:image" content="img/p6.jpg">
-<title>Lucas Livre — Venda online com método</title>
-<meta name="description" content="Lucas Livre: 7 módulos práticos para estruturar sua operação de e-commerce, da pesquisa de produto à gestão de crescimento.">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,600;9..144,700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+<script>document.documentElement.classList.add("js")</script>
 <style>
+/* Paleta 60-30-10: 60% creme quente, 30% verde-petróleo (confiança, crescimento), 10% âmbar (ação, complementar ao verde) */
 :root{
-  --bg:#0b1020; --bg2:#121936; --card:#161e40; --line:#27315f;
-  --txt:#eef1ff; --muted:#a3acd6; --accent:#ffd23f; --accent2:#7c5cff; --accent3:#22d3a6;
-  --radius:20px;
+  --bg:#fbf9f4; --surface:#fff; --ink:#13231f; --muted:#55645f; --line:#e6e1d6;
+  --teal:#0f5c4d; --teal-dk:#0b3f36; --teal-lt:#e3f1ed; --teal-mid:#168a73;
+  --amber:#f6a91b; --amber-dk:#e29508; --warn:#c2412d;
+  --r:18px; --shadow:0 18px 40px -24px rgba(19,35,31,.35);
 }
 *{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
-body{font-family:Inter,-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--txt);line-height:1.6;overflow-x:hidden;
-  padding-left:env(safe-area-inset-left);padding-right:env(safe-area-inset-right)}
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%;scroll-padding-top:76px}
+body{font-family:Inter,-apple-system,"Segoe UI",Roboto,sans-serif;background:var(--bg);color:var(--ink);line-height:1.65;font-size:17px;overflow-x:hidden;padding-bottom:env(safe-area-inset-bottom)}
+img{max-width:100%;display:block}
 a{color:inherit;text-decoration:none}
+:focus-visible{outline:3px solid var(--amber);outline-offset:3px;border-radius:6px}
 .wrap{width:min(1120px,100% - 40px);margin-inline:auto}
-section{padding:72px 0;position:relative}
-h1,h2,h3{font-family:"Space Grotesk",Inter,sans-serif;line-height:1.1;letter-spacing:-.02em}
-h2{font-size:clamp(1.7rem,5vw,2.6rem);margin-bottom:12px}
-.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--accent);margin-bottom:12px}
-.lead{color:var(--muted);font-size:1.05rem;max-width:620px}
-.grad{background:linear-gradient(90deg,var(--accent),#ff8a5c 50%,var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
+section{padding:72px 0}
+h1,h2,h3{font-family:Fraunces,Georgia,serif;font-weight:700;line-height:1.12;letter-spacing:-.01em;color:var(--teal-dk)}
+h1{font-size:clamp(2.2rem,7.2vw,3.9rem)}
+h2{font-size:clamp(1.7rem,4.6vw,2.5rem);margin-bottom:12px}
+.eyebrow{display:inline-block;font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--teal-mid);margin-bottom:12px}
+.lead{color:var(--muted);font-size:1.08rem;max-width:620px}
+.alt{background:#f3efe6}
 
-/* nav */
-nav{position:fixed;top:0;left:0;right:0;z-index:50;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px);background:rgba(11,16,32,.72);border-bottom:1px solid rgba(255,255,255,.06);padding-top:env(safe-area-inset-top)}
-nav .wrap{display:flex;align-items:center;justify-content:space-between;height:60px}
-.logo{font-weight:800;font-size:1.15rem;display:flex;align-items:center;gap:8px}
-.logo img{width:30px;height:30px;border-radius:9px}
-.links{display:none;gap:26px;font-size:.92rem;color:var(--muted)}
-.links a:hover{color:var(--txt)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;border-radius:999px;font-weight:700;font-size:1rem;border:0;cursor:pointer;transition:transform .2s,box-shadow .2s;min-height:48px}
-.btn-primary{background:linear-gradient(90deg,var(--accent),#ffb347);color:#0b1020;box-shadow:0 10px 30px -8px rgba(255,210,63,.55)}
-.btn-primary:hover{transform:translateY(-2px)}
-.btn-ghost{border:1px solid var(--line);color:var(--txt);background:rgba(255,255,255,.03)}
-.btn-sm{padding:9px 18px;min-height:40px;font-size:.9rem}
+/* botões */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;padding:14px 26px;min-height:50px;border-radius:12px;font-weight:700;font-size:1rem;border:2px solid transparent;cursor:pointer;transition:transform .15s,background .2s,box-shadow .2s;font-family:inherit}
+.btn:active{transform:scale(.98)}
+.btn-primary{background:var(--amber);color:var(--ink);box-shadow:0 8px 20px -8px rgba(226,149,8,.7)}
+.btn-primary:hover{background:var(--amber-dk)}
+.btn-ghost{border-color:var(--teal);color:var(--teal);background:transparent}
+.btn-ghost:hover{background:var(--teal-lt)}
+.btn-sm{padding:9px 18px;min-height:42px;font-size:.92rem}
+
+/* topo */
+#bar{position:fixed;top:0;left:0;height:3px;width:0;background:var(--amber);z-index:100}
+header.top{position:sticky;top:0;z-index:50;background:rgba(251,249,244,.92);backdrop-filter:blur(12px);-webkit-backdrop-filter:blur(12px);border-bottom:1px solid var(--line);padding-top:env(safe-area-inset-top)}
+header.top .wrap{display:flex;align-items:center;justify-content:space-between;height:64px}
+.logo{display:flex;align-items:center;gap:10px;font-family:Fraunces,serif;font-weight:700;font-size:1.25rem;color:var(--teal-dk)}
+.logo img{width:32px;height:32px;border-radius:9px}
+.links{display:none;gap:28px;font-size:.93rem;font-weight:500;color:var(--muted)}
+.links a:hover{color:var(--teal)}
 
 /* hero */
-.hero{padding-top:130px;overflow:hidden}
-.hero::before,.hero::after{content:"";position:absolute;border-radius:50%;filter:blur(90px);z-index:0;opacity:.5}
-.hero::before{width:380px;height:380px;background:var(--accent2);top:-80px;right:-120px}
-.hero::after{width:300px;height:300px;background:#ff6b4a;opacity:.25;bottom:-60px;left:-100px}
-.hero .wrap{position:relative;z-index:1;display:grid;gap:44px}
-.hero h1{font-size:clamp(2.3rem,9vw,4.4rem);margin-bottom:18px}
-.hero p.lead{margin-bottom:28px}
+.hero{padding:44px 0 76px}
+.hero .wrap{display:grid;gap:44px}
+.hero h1 em{font-style:normal;color:var(--teal-mid);background:linear-gradient(transparent 62%,rgba(246,169,27,.45) 62%)}
+.hero .lead{margin:20px 0 28px}
 .cta{display:flex;flex-wrap:wrap;gap:12px}
-.badge{display:inline-flex;gap:8px;align-items:center;padding:7px 14px;border:1px solid var(--line);border-radius:999px;font-size:.82rem;color:var(--muted);background:rgba(255,255,255,.03);margin-bottom:20px}
-.badge b{width:8px;height:8px;border-radius:50%;background:var(--accent3);box-shadow:0 0 0 4px rgba(34,211,166,.2);animation:pulse 2s infinite}
-@keyframes pulse{50%{box-shadow:0 0 0 8px rgba(34,211,166,0)}}
-.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:34px}
-.stat{padding:16px 10px;border-radius:16px;background:rgba(255,255,255,.04);border:1px solid var(--line);text-align:center}
-.stat strong{display:block;font-size:1.7rem;color:var(--accent)}
-.stat span{font-size:.78rem;color:var(--muted)}
+.trust{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:26px;font-size:.9rem;color:var(--muted);list-style:none}
+.trust li::before{content:"✓";color:var(--teal-mid);font-weight:800;margin-right:6px}
+.visual{position:relative}
+.photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:62% center;border-radius:26px;box-shadow:var(--shadow)}
+.mock{position:relative;margin:-64px 14px 0;background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:18px;box-shadow:var(--shadow)}
+.mock h4{font-size:.74rem;text-transform:uppercase;letter-spacing:.1em;color:var(--teal-mid);margin-bottom:6px}
+.mock .row{display:flex;justify-content:space-between;font-size:.88rem;padding:7px 0;border-bottom:1px dashed var(--line);color:var(--muted)}
+.mock .row b{color:var(--ink)}
+.mock .total{display:flex;justify-content:space-between;align-items:center;margin-top:12px;padding:12px 14px;border-radius:12px;background:var(--teal-lt);color:var(--teal);font-weight:800}
+.mock .total span:last-child{font-size:1.25rem}
+.mock small{display:block;margin-top:8px;font-size:.72rem;color:var(--muted)}
 
-/* hero visual */
-.visual{position:relative;padding-bottom:36px}
-.photo{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:62% center;border-radius:30px;display:block;border:1px solid var(--line);box-shadow:0 40px 80px -30px rgba(0,0,0,.7)}
-.visual .mock{position:relative;margin:-70px 14px 0;padding:18px;animation:none}
-.visual .chip.a{top:16px;left:16px}.visual .chip.b{top:16px;bottom:auto;right:16px}
-.mock{width:min(100%,380px);background:linear-gradient(160deg,var(--card),#0f1530);border:1px solid var(--line);border-radius:26px;padding:22px;box-shadow:0 40px 80px -30px rgba(0,0,0,.7);animation:float 6s ease-in-out infinite}
-@keyframes float{50%{transform:translateY(-12px)}}
-.mock .row{display:flex;justify-content:space-between;font-size:.88rem;padding:9px 0;border-bottom:1px dashed var(--line);color:var(--muted)}
-.mock .row b{color:var(--txt)}
-.mock .total{display:flex;justify-content:space-between;align-items:center;margin-top:14px;padding:14px;border-radius:14px;background:rgba(34,211,166,.12);color:var(--accent3);font-weight:800}
-.mock .total span:last-child{font-size:1.4rem}
-.mock h4{margin-bottom:8px;font-size:.8rem;text-transform:uppercase;letter-spacing:.1em;color:var(--accent)}
-.chip{position:absolute;padding:10px 14px;border-radius:14px;background:var(--bg2);border:1px solid var(--line);font-size:.82rem;font-weight:600;box-shadow:0 14px 30px -10px rgba(0,0,0,.6)}
-.chip.a{top:6px;left:0;animation:float 5s ease-in-out infinite}
-.chip.b{bottom:10px;right:0;animation:float 7s ease-in-out infinite reverse}
+/* resultados */
+.grid{display:grid;gap:14px;margin-top:34px}
+.out{display:flex;gap:14px;padding:18px;background:var(--surface);border:1px solid var(--line);border-radius:var(--r)}
+.out i{flex:none;width:42px;height:42px;border-radius:12px;background:var(--teal-lt);display:grid;place-items:center;font-style:normal;font-size:1.2rem}
+.out b{display:block;color:var(--teal-dk)}.out span{color:var(--muted);font-size:.92rem}
 
-/* marquee */
-.marquee{border-block:1px solid var(--line);background:var(--bg2);overflow:hidden;padding:16px 0;white-space:nowrap}
-.marquee div{display:inline-block;animation:slide 28s linear infinite;color:var(--muted);font-weight:600}
-.marquee span{margin:0 26px}
-.marquee span::before{content:"✦ ";color:var(--accent)}
-@keyframes slide{to{transform:translateX(-50%)}}
+/* para quem */
+.who{display:grid;gap:28px;align-items:center}
+.who img{border-radius:24px;aspect-ratio:3/2;object-fit:cover;width:100%;box-shadow:var(--shadow)}
+.lists{display:grid;gap:18px;margin-top:22px}
+.lists h3{font-size:1.05rem;margin-bottom:8px;font-family:Inter,sans-serif}
+.lists ul{list-style:none}
+.lists li{padding:5px 0 5px 28px;position:relative;color:var(--muted);font-size:.97rem}
+.lists .yes li::before{content:"✓";position:absolute;left:0;color:var(--teal-mid);font-weight:800}
+.lists .no li::before{content:"✕";position:absolute;left:0;color:var(--warn);font-weight:800}
 
-/* steps */
-.cycle{display:grid;gap:12px;margin-top:34px}
-.step{display:flex;gap:14px;align-items:center;padding:16px 18px;border-radius:16px;background:var(--card);border:1px solid var(--line)}
-.step em{font-style:normal;width:40px;height:40px;border-radius:12px;display:grid;place-items:center;font-size:1.2rem;background:rgba(124,92,255,.18);flex:none}
-.step b{display:block}.step small{color:var(--muted)}
-
-/* modules */
-.mods{display:grid;gap:14px;margin-top:36px}
-.mod{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);overflow:hidden;transition:border-color .2s}
-.mod.open{border-color:var(--accent2)}
-.mod button{width:100%;background:none;border:0;color:inherit;font:inherit;text-align:left;padding:20px;display:flex;gap:16px;align-items:center;cursor:pointer;min-height:72px}
-.mod .num{font-size:1.9rem;font-weight:900;color:transparent;-webkit-text-stroke:1.5px var(--accent);min-width:48px}
-.mod h3{font-size:1.1rem}
-.mod small{color:var(--muted);display:block;font-size:.85rem}
-.mod .plus{margin-left:auto;font-size:1.6rem;color:var(--accent);transition:transform .3s}
+/* módulos */
+.prog{display:flex;align-items:center;gap:12px;margin-top:22px}
+.prog div{flex:1;height:10px;border-radius:99px;background:#e4dfd2;overflow:hidden}
+.prog i{display:block;height:100%;width:0;background:var(--teal-mid);transition:width .5s}
+.prog span{font-size:.85rem;font-weight:600;color:var(--teal);white-space:nowrap}
+.mods{display:grid;gap:12px;margin-top:22px}
+.mod{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+.mod.open{border-color:var(--teal-mid);box-shadow:var(--shadow)}
+.mod>button{width:100%;background:none;border:0;color:inherit;font:inherit;text-align:left;padding:18px 20px;display:flex;gap:16px;align-items:center;cursor:pointer;min-height:76px}
+.mod .num{flex:none;width:44px;height:44px;border-radius:12px;background:var(--teal);color:#fff;display:grid;place-items:center;font-family:Fraunces,serif;font-weight:700;font-size:1.2rem}
+.mod.done .num{background:var(--teal-mid)}
+.mod h3{font-size:1.12rem}
+.mod small{color:var(--muted);display:block;font-size:.88rem;line-height:1.4;margin-top:2px}
+.mod .plus{margin-left:auto;font-size:1.6rem;color:var(--teal-mid);transition:transform .3s;flex:none}
 .mod.open .plus{transform:rotate(45deg)}
 .mod .body{max-height:0;overflow:hidden;transition:max-height .4s ease}
-.mod .inner{padding:0 20px 22px 20px;color:var(--muted);font-size:.95rem}
-.mod ul{list-style:none;margin:10px 0 14px}
-.mod li{padding:6px 0 6px 26px;position:relative}
-.mod li::before{content:"✓";position:absolute;left:0;color:var(--accent3);font-weight:800}
-.deliver{display:inline-block;padding:6px 12px;border-radius:999px;background:rgba(255,210,63,.12);color:var(--accent);font-size:.8rem;font-weight:700}
+.mod .inner{padding:0 20px 22px;color:var(--muted);font-size:.96rem}
+.mod ul{list-style:none;margin:4px 0 14px}
+.mod li{padding:5px 0 5px 26px;position:relative}
+.mod li::before{content:"✓";position:absolute;left:0;color:var(--teal-mid);font-weight:800}
+.deliver{display:inline-block;padding:6px 12px;border-radius:999px;background:#fdf0d2;color:#7a4a00;font-size:.82rem;font-weight:600}
+.done-btn{margin:8px 0 0;padding:8px 16px;min-height:40px;border-radius:10px;border:1.5px solid var(--teal);background:transparent;color:var(--teal);font:inherit;font-size:.86rem;font-weight:600;cursor:pointer;display:block}
+.mod.done .done-btn{background:var(--teal);color:#fff}
 
-/* calc */
-.calc{display:grid;gap:24px;margin-top:36px}
-.panel{background:var(--card);border:1px solid var(--line);border-radius:var(--radius);padding:24px}
+/* ferramentas */
+.tabs{display:inline-flex;gap:6px;padding:5px;background:#e9e4d6;border-radius:14px;margin:26px 0 20px;max-width:100%}
+.tab{border:0;background:transparent;font:inherit;font-weight:600;font-size:.93rem;padding:11px 18px;min-height:44px;border-radius:10px;color:var(--muted);cursor:pointer}
+.tab[aria-selected=true]{background:var(--surface);color:var(--teal-dk);box-shadow:0 2px 8px rgba(19,35,31,.12)}
+.tool{display:none;gap:20px}.tool.on{display:grid}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);padding:24px}
 .field{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:8px 0}
-.field label{color:var(--muted);font-size:.92rem}
-.field input{width:120px;padding:10px 12px;border-radius:12px;border:1px solid var(--line);background:var(--bg);color:var(--txt);font-size:16px;text-align:right}
-.field input:focus{outline:2px solid var(--accent2)}
-.res .big{font-size:2.6rem;font-weight:900}
-.res .pos{color:var(--accent3)}.res .neg{color:#ff6b6b}
+.field label{color:var(--muted);font-size:.93rem}
+.field input{width:120px;padding:11px 12px;border-radius:10px;border:1.5px solid var(--line);background:#fdfcf9;color:var(--ink);font-size:16px;text-align:right;font-family:inherit}
+.field input:focus{outline:none;border-color:var(--teal-mid);box-shadow:0 0 0 3px var(--teal-lt)}
+.res .big,.score{font-family:Fraunces,serif;font-size:2.8rem;font-weight:700;line-height:1.1;margin:4px 0 6px}
+.pos{color:var(--teal-mid)}.neg{color:var(--warn)}
 .kpis{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-top:16px}
-.kpi{background:var(--bg);border-radius:14px;padding:14px;border:1px solid var(--line)}
-.kpi span{font-size:.75rem;color:var(--muted);text-transform:uppercase;letter-spacing:.08em}
-.kpi b{display:block;font-size:1.3rem}
-.bar{height:12px;border-radius:99px;background:var(--bg);overflow:hidden;margin-top:18px;border:1px solid var(--line)}
-.bar i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent3),var(--accent));transition:width .5s}
-.note{font-size:.78rem;color:var(--muted);margin-top:12px}
+.kpi{background:#f7f4ec;border-radius:12px;padding:12px 14px}
+.kpi span{font-size:.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:.07em}
+.kpi b{display:block;font-size:1.2rem;color:var(--ink)}
+.meter{height:10px;border-radius:99px;background:#e9e4d6;overflow:hidden;margin-top:18px}
+.meter i{display:block;height:100%;width:0;background:var(--teal-mid);transition:width .5s}
+.note{font-size:.8rem;color:var(--muted);margin-top:12px}
+.sl{padding:12px 0;border-bottom:1px dashed var(--line)}
+.sl .t{display:flex;justify-content:space-between;gap:10px;font-size:.92rem;font-weight:500}
+.sl .t b{color:var(--teal-mid)}
+.sl small{display:block;color:var(--muted);font-size:.8rem;font-weight:400}
+.sl input{width:100%;accent-color:var(--teal-mid);height:32px}
+.verdict{margin-top:14px;padding:12px 14px;border-radius:12px;background:#fdf0d2;color:#6b4100;font-weight:600;font-size:.93rem}
 
-/* timeline */
-.tl{margin-top:36px;display:grid;gap:16px;position:relative}
-.tl-item{padding:22px;border-radius:var(--radius);background:var(--card);border:1px solid var(--line);position:relative}
-.tl-item .d{display:inline-block;padding:4px 12px;border-radius:999px;background:var(--accent2);font-size:.78rem;font-weight:700;margin-bottom:10px}
-.tl-item h3{margin-bottom:6px}.tl-item p{color:var(--muted);font-size:.93rem}
+/* plano */
+.tl{margin-top:34px;display:grid;gap:14px}
+.tl-item{padding:22px;border-radius:var(--r);background:var(--surface);border:1px solid var(--line);border-top:4px solid var(--teal-mid)}
+.tl-item .d{font-size:.78rem;font-weight:700;color:var(--teal-mid);text-transform:uppercase;letter-spacing:.08em}
+.tl-item h3{margin:4px 0 6px;font-size:1.2rem}.tl-item p{color:var(--muted);font-size:.94rem}
 
-/* glossary */
-.gloss{display:grid;gap:12px;margin-top:36px}
-.g{padding:18px 20px;border-radius:16px;border:1px solid var(--line);background:var(--card)}
-.g b{color:var(--accent)}.g p{color:var(--muted);font-size:.92rem;margin-top:4px}
+/* galeria */
+.gal{display:grid;gap:14px;margin-top:30px}
+.gc{position:relative;border-radius:var(--r);overflow:hidden;min-height:220px}
+.gc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.gc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 35%,rgba(11,63,54,.92))}
+.gc div{position:absolute;left:18px;right:18px;bottom:16px;z-index:1;color:#fff}
+.gc b{display:block;font-family:Fraunces,serif;font-size:1.2rem}.gc span{font-size:.86rem;opacity:.9}
 
-/* gallery */
-.gal{display:grid;gap:16px;margin-top:36px}
-.gc{position:relative;border-radius:var(--radius);overflow:hidden;min-height:260px;border:1px solid var(--line)}
-.gc img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform .8s}
-.gc:hover img{transform:scale(1.06)}
-.gc::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 30%,rgba(11,16,32,.92))}
-.gc div{position:absolute;left:20px;right:20px;bottom:18px;z-index:1}
-.gc b{font-family:"Space Grotesk";font-size:1.25rem;display:block}.gc span{font-size:.88rem;color:#cfd5f5}
-/* cta */
-.final{text-align:center}
-.final .box{padding:64px 24px;border-radius:30px;background:linear-gradient(135deg,rgba(42,28,122,.9),rgba(91,61,240,.82) 55%,rgba(255,122,89,.8)),url(img/p7.jpg) center/cover;position:relative;overflow:hidden}
-.final h2{margin-bottom:14px}
-.final p{max-width:520px;margin:0 auto 26px;opacity:.9}
+/* glossário + faq */
+.gloss{display:grid;gap:12px;margin-top:30px}
+.g{padding:18px 20px;border-radius:14px;border:1px solid var(--line);background:var(--surface)}
+.g b{color:var(--teal)}.g p{color:var(--muted);font-size:.93rem;margin-top:2px}
+details{background:var(--surface);border:1px solid var(--line);border-radius:14px;margin-bottom:10px}
+summary{cursor:pointer;padding:18px 20px;font-weight:600;list-style:none;display:flex;justify-content:space-between;gap:12px;min-height:56px;align-items:center;color:var(--teal-dk)}
+summary::-webkit-details-marker{display:none}
+summary::after{content:"+";font-size:1.5rem;color:var(--teal-mid);flex:none}
+details[open] summary::after{content:"–"}
+details p{padding:0 20px 18px;color:var(--muted);font-size:.96rem}
 
-footer{padding:36px 0 50px;border-top:1px solid var(--line);color:var(--muted);font-size:.8rem;text-align:center}
-footer p{max-width:640px;margin:8px auto 0}
+/* final */
+.final{background:var(--teal-dk);color:#fff;text-align:center;padding:84px 0}
+.final h2{color:#fff}.final p{max-width:540px;margin:0 auto 26px;color:#c8ddd7}
+footer{background:#08302a;color:#9dbbb3;padding:32px 0 calc(32px + 70px);font-size:.8rem;text-align:center}
+footer b{color:#fff}footer p{max-width:660px;margin:8px auto 0}
 
-/* reveal */
-.rv{opacity:0;transform:translateY(26px);transition:opacity .7s,transform .7s}
-.rv.in{opacity:1;transform:none}
-@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.rv{opacity:1;transform:none}}
+/* barra fixa mobile */
+.sticky{position:fixed;left:0;right:0;bottom:0;z-index:60;padding:10px 16px calc(10px + env(safe-area-inset-bottom));background:rgba(251,249,244,.96);border-top:1px solid var(--line);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);transform:translateY(110%);transition:transform .3s}
+.sticky.show{transform:none}
+.sticky .btn{width:100%}
+
+.js .rv{opacity:0;transform:translateY(20px);transition:opacity .6s,transform .6s}
+.js .rv.in{opacity:1;transform:none}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;scroll-behavior:auto!important}.js .rv{opacity:1;transform:none}}
 
 @media(min-width:760px){
-  .gal{grid-template-columns:repeat(3,1fr)}.gc.tall{grid-row:span 2}.gc{min-height:240px}
-  .photo{aspect-ratio:4/5}
-  .visual{padding-bottom:0}
-  .visual .mock{position:absolute;left:-32px;bottom:-28px;margin:0;width:280px;padding:16px;font-size:.92rem;animation:float 6s ease-in-out infinite}
-  .visual .mock .row{padding:7px 0;font-size:.82rem}
-  .visual .mock .total span:last-child{font-size:1.15rem}
-  .links{display:flex}
-  .hero .wrap{grid-template-columns:1.1fr .9fr;align-items:center}
-  .cycle{grid-template-columns:repeat(5,1fr)}
-  .step{flex-direction:column;text-align:center}
-  .calc{grid-template-columns:1fr 1fr}
-  .tl{grid-template-columns:repeat(2,1fr)}
-  .gloss{grid-template-columns:repeat(2,1fr)}
   section{padding:96px 0}
+  .links{display:flex}
+  .hero{padding:72px 0 100px}
+  .hero .wrap{grid-template-columns:1.05fr .95fr;align-items:center}
+  .visual .mock{position:absolute;left:-44px;bottom:-30px;margin:0;width:285px}
+  .grid{grid-template-columns:repeat(2,1fr)}
+  .who{grid-template-columns:1fr 1fr;gap:56px}
+  .lists{grid-template-columns:1fr 1fr}
+  .tool.on{grid-template-columns:1fr 1fr}
+  .tl{grid-template-columns:repeat(4,1fr)}
+  .gal{grid-template-columns:1.2fr 1fr 1fr}.gc{min-height:300px}
+  .gloss{grid-template-columns:repeat(2,1fr)}
+  .sticky{display:none}
+  footer{padding-bottom:36px}
 }
-
-/* ===== Tema amarelo / azul / branco ===== */
-:root{--bg:#fff;--bg2:#f1f3fb;--card:#fff;--line:#e2e5f1;--txt:#1d2250;--muted:#5b6188;--accent:#3483fa;--accent2:#2d3277;--accent3:#00a650;--yellow:#ffe600}
-nav{background:var(--yellow);border-bottom:0;box-shadow:0 2px 10px rgba(45,50,119,.12)}
-.links{color:var(--accent2)}.links a:hover{color:#000}
-.logo{color:var(--accent2)}
-.hero{background:linear-gradient(180deg,#fff3a0 0,#fffbe0 55%,#fff 100%)}
-.hero::before{background:var(--accent);opacity:.18}.hero::after{background:var(--yellow);opacity:.5}
-.btn-primary{background:var(--accent);color:#fff;box-shadow:0 10px 24px -8px rgba(52,131,250,.6)}
-nav .btn-primary{background:var(--accent2);box-shadow:none}
-.btn-ghost{border-color:var(--accent2);color:var(--accent2);background:rgba(255,255,255,.6)}
-.grad{background:linear-gradient(90deg,var(--accent),var(--accent2));-webkit-background-clip:text;background-clip:text;color:transparent}
-.badge,.stat{background:#fff;border-color:var(--line);box-shadow:0 6px 18px -10px rgba(45,50,119,.25)}
-.stat strong,.eyebrow,.mock h4,.g b{color:var(--accent)}
-.photo,.mock,.panel,.mod,.step,.tl-item,.g,.chip{box-shadow:0 14px 34px -18px rgba(45,50,119,.3)}
-.mock{background:#fff}.chip{background:#fff;color:var(--accent2)}
-.mock .row b{color:var(--txt)}
-.mock .total{background:rgba(0,166,80,.1);color:var(--accent3)}
-.marquee{background:var(--accent2);border-color:var(--accent2)}.marquee div{color:#fff}.marquee span::before{color:var(--yellow)}
-.step em{background:#fff6b8}
-.mod .num{-webkit-text-stroke:1.5px var(--accent2)}
-.mod.open{border-color:var(--accent)}
-.deliver{background:#fff6b8;color:var(--accent2)}
-.field input{background:#f7f8fc}
-.kpi,.bar{background:#f4f6fc}
-.bar i{background:linear-gradient(90deg,var(--accent),var(--yellow))}
-.res .neg{color:#e5393b}
-.tl-item .d{background:var(--accent2);color:#fff}
-.gc,.gc b{color:#fff}.gc span{color:#e4e8ff}
-.final .box{background:linear-gradient(135deg,rgba(45,50,119,.92),rgba(52,131,250,.82)),url(img/p7.jpg) center/cover;color:#fff}
-.final .box .btn-primary{background:var(--yellow);color:var(--accent2);box-shadow:0 10px 24px -8px rgba(0,0,0,.4)}
-footer{background:var(--accent2);color:#cfd4ff;border:0}footer b{color:#fff}
-#progress{position:fixed;top:0;left:0;height:4px;width:0;background:var(--accent2);z-index:100;transition:width .1s}
-.links a.on{color:#000;font-weight:700}
-.prog{display:flex;align-items:center;gap:12px;margin-top:20px}
-.prog div{flex:1;height:10px;border-radius:99px;background:#dfe3f3;overflow:hidden}
-.prog i{display:block;height:100%;width:0;background:linear-gradient(90deg,var(--accent),var(--accent3));transition:width .5s}
-.prog span{font-size:.85rem;font-weight:700;color:var(--accent2);white-space:nowrap}
-.done-btn{display:inline-flex;margin-left:8px;padding:6px 14px;border-radius:999px;border:1px solid var(--accent);background:#fff;color:var(--accent);font:inherit;font-size:.8rem;font-weight:700;cursor:pointer}
-.mod.done .done-btn{background:var(--accent3);border-color:var(--accent3);color:#fff}
-.mod.done .num{-webkit-text-stroke-color:var(--accent3)}
-.sl{padding:12px 0;border-bottom:1px dashed var(--line)}
-.sl .top{display:flex;justify-content:space-between;gap:10px;font-size:.9rem;margin-bottom:6px}
-.sl .top b{color:var(--accent)}.sl small{color:var(--muted);display:block;font-size:.78rem}
-.sl input[type=range]{width:100%;accent-color:var(--accent);height:28px}
-.score{font-size:3rem;font-weight:900;font-family:"Space Grotesk"}
-.verdict{margin-top:14px;padding:12px 14px;border-radius:14px;background:#fff6b8;color:var(--accent2);font-weight:600;font-size:.92rem}
+@media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
 </style>
 </head>
 <body>
+<div id="bar"></div>
 
-<div id="progress"></div>
-<nav>
+<header class="top">
   <div class="wrap">
     <a href="#top" class="logo"><img src="favicon.svg" alt=""> Lucas Livre</a>
-    <div class="links"><a href="#metodo">Método</a><a href="#modulos">Módulos</a><a href="#simulador">Simulador</a><a href="#matriz">Matriz</a><a href="#plano">Plano 30 dias</a><a href="#glossario">Glossário</a></div>
-    <a href="#modulos" class="btn btn-primary btn-sm">Começar</a>
-  </div>
-</nav>
-
-<header class="hero" id="top">
-  <div class="wrap">
-    <div class="rv">
-      <span class="badge"><b></b> 7 módulos · 100% prático</span>
-      <h1>Liberte-se do <span class="grad">achismo</span> e venda online com método.</h1>
-      <p class="lead">Do primeiro produto à gestão de crescimento: um passo a passo para montar sua operação de e-commerce no Mercado Livre com números, rotina e decisão. Sem promessa mágica.</p>
-      <div class="cta">
-        <a href="#modulos" class="btn btn-primary">Ver os 7 módulos →</a>
-        <a href="#simulador" class="btn btn-ghost">Testar o simulador</a>
-      </div>
-      <div class="stats">
-        <div class="stat"><strong data-n="7">7</strong><span>módulos</span></div>
-        <div class="stat"><strong data-n="30">30</strong><span>dias de plano</span></div>
-        <div class="stat"><strong data-n="90">90</strong><span>dias de escala</span></div>
-      </div>
-    </div>
-    <div class="visual rv">
-      <img class="photo" src="img/p6.jpg" alt="Empreendedora atendendo cliente no balcão" fetchpriority="high">
-      <div class="chip a">📦 Produto validado</div>
-      <div class="mock">
-        <h4>Conta por unidade</h4>
-        <div class="row"><span>Preço de venda</span><b>R$ 169,90</b></div>
-        <div class="row"><span>Custo do produto</span><b>− R$ 72,00</b></div>
-        <div class="row"><span>Tarifa + frete</span><b>− R$ 40,49</b></div>
-        <div class="row"><span>Imposto, embalagem, ads</span><b>− R$ 28,49</b></div>
-        <div class="total"><span>Contribuição</span><span>R$ 28,92</span></div>
-      </div>
-      <div class="chip b">📈 ROAS 5,0</div>
-    </div>
+    <nav class="links" aria-label="Seções">
+      <a href="#resultado">O que você leva</a><a href="#modulos">Módulos</a><a href="#ferramentas">Ferramentas</a><a href="#plano">Plano de 30 dias</a><a href="#faq">Dúvidas</a>
+    </nav>
+    <a href="#modulos" class="btn btn-primary btn-sm">Ver módulos</a>
   </div>
 </header>
 
-<div class="marquee" aria-hidden="true"><div>
-  <span>Pesquisa de produtos</span><span>Anúncios que vendem</span><span>Precificação</span><span>Logística</span><span>Publicidade</span><span>Escala com controle</span><span>Capital de giro</span>
-  <span>Pesquisa de produtos</span><span>Anúncios que vendem</span><span>Precificação</span><span>Logística</span><span>Publicidade</span><span>Escala com controle</span><span>Capital de giro</span>
-</div></div>
-
-<section id="metodo">
+<main id="top">
+<section class="hero">
   <div class="wrap">
     <div class="rv">
-      <span class="eyebrow">O método</span>
-      <h2>Vender é só uma parte do processo.</h2>
-      <p class="lead">Uma operação saudável conecta cinco atividades e protege a margem e o caixa ao mesmo tempo.</p>
+      <span class="eyebrow">Curso prático · 7 módulos</span>
+      <h1>Pare de adivinhar. Venda online com <em>método e números</em>.</h1>
+      <p class="lead">Um passo a passo para estruturar sua operação de e-commerce no Mercado Livre: escolher produto, montar o anúncio, calcular o lucro de cada venda e crescer com controle de caixa.</p>
+      <div class="cta">
+        <a href="#modulos" class="btn btn-primary">Ver os 7 módulos</a>
+        <a href="#ferramentas" class="btn btn-ghost">Testar o simulador</a>
+      </div>
+      <ul class="trust">
+        <li>Sem promessa de ganho fácil</li><li>Planilhas e checklists</li><li>Estude no seu ritmo</li>
+      </ul>
     </div>
-    <div class="cycle">
-      <div class="step rv"><em>🔎</em><div><b>Pesquisa</b><small>escolher a oferta</small></div></div>
-      <div class="step rv"><em>🛒</em><div><b>Compra</b><small>custo posto no estoque</small></div></div>
-      <div class="step rv"><em>🏷️</em><div><b>Anúncio</b><small>clareza que converte</small></div></div>
-      <div class="step rv"><em>🚚</em><div><b>Envio</b><small>prazo e qualidade</small></div></div>
-      <div class="step rv"><em>📊</em><div><b>Análise</b><small>medir e decidir</small></div></div>
+    <div class="visual rv">
+      <img class="photo" src="img/p6.jpg" alt="Empreendedora atendendo uma cliente no balcão da loja" fetchpriority="high">
+      <div class="mock">
+        <h4>Conta por unidade (exemplo)</h4>
+        <div class="row"><span>Preço de venda</span><b>R$ 169,90</b></div>
+        <div class="row"><span>Custo do produto</span><b>– R$ 72,00</b></div>
+        <div class="row"><span>Tarifa e frete</span><b>– R$ 40,49</b></div>
+        <div class="row"><span>Imposto, embalagem e anúncio</span><b>– R$ 28,49</b></div>
+        <div class="total"><span>Sobra</span><span>R$ 28,92</span></div>
+        <small>Valores fictícios, só para ilustrar a conta.</small>
+      </div>
     </div>
   </div>
 </section>
 
-<section id="pratica" style="padding-top:0">
+<section id="resultado" class="alt">
   <div class="wrap">
     <div class="rv">
-      <span class="eyebrow">Na prática</span>
-      <h2>Da prateleira ao cliente</h2>
-      <p class="lead">Pesquisa, estoque, atendimento e números: tudo o que acontece por trás de cada venda.</p>
+      <span class="eyebrow">O que você leva</span>
+      <h2>Sete entregas concretas, uma por módulo</h2>
+      <p class="lead">Você termina com material seu, pronto para usar, e não só com conteúdo assistido.</p>
     </div>
-    <div class="gal">
-      <div class="gc tall rv"><img loading="lazy" src="img/p2.jpg" alt="Corredor de armazém"><div><b>Estoque sob controle</b><span>Entradas, saídas e reposição</span></div></div>
-      <div class="gc rv"><img loading="lazy" src="img/p4.jpg" alt="Notebook com painel de métricas"><div><b>Métricas que importam</b><span>ACOS, ROAS e margem</span></div></div>
-      <div class="gc rv"><img loading="lazy" src="img/p5.jpg" alt="Galpão logístico"><div><b>Logística organizada</b><span>Separar, embalar, despachar</span></div></div>
-      <div class="gc rv"><img loading="lazy" src="img/p3.jpg" alt="Vendedor atendendo cliente"><div><b>Atendimento e reputação</b><span>Clareza gera confiança</span></div></div>
-      <div class="gc rv"><img loading="lazy" src="img/p1.jpg" alt="Sacolas de compras"><div><b>Oferta bem apresentada</b><span>Anúncio é página de decisão</span></div></div>
+    <div class="grid">
+      <div class="out rv"><i>🗓️</i><div><b>Plano inicial de 30 dias</b><span>Orçamento, metas e limite de perda definidos.</span></div></div>
+      <div class="out rv"><i>🧮</i><div><b>Matriz de seleção</b><span>Compare produtos com critérios e pesos.</span></div></div>
+      <div class="out rv"><i>✅</i><div><b>Checklist de anúncio</b><span>Publique sem esquecer nada importante.</span></div></div>
+      <div class="out rv"><i>💰</i><div><b>Planilha de lucro por unidade</b><span>Saiba o que realmente sobra de cada venda.</span></div></div>
+      <div class="out rv"><i>📦</i><div><b>Checklist operacional</b><span>Pedido, estoque e atendimento sem surpresas.</span></div></div>
+      <div class="out rv"><i>📊</i><div><b>Painel de métricas</b><span>ACOS, ROAS e decisões com dados.</span></div></div>
+      <div class="out rv"><i>🌱</i><div><b>Plano de crescimento</b><span>Reinvestir com controle e capital de giro.</span></div></div>
     </div>
   </div>
 </section>
 
-<section id="modulos" style="background:var(--bg2)">
+<section>
+  <div class="wrap who">
+    <img class="rv" loading="lazy" src="img/p7.jpg" alt="Três pessoas conversando e trabalhando com notebooks">
+    <div class="rv">
+      <span class="eyebrow">Para quem é</span>
+      <h2>Feito para quem quer começar certo</h2>
+      <div class="lists">
+        <div class="yes"><h3>É para você se…</h3><ul><li>Quer vender online e não sabe por onde começar</li><li>Já vende, mas não sabe quanto sobra por venda</li><li>Prefere decidir com números a seguir modinha</li></ul></div>
+        <div class="no"><h3>Não é para você se…</h3><ul><li>Procura dinheiro rápido ou garantido</li><li>Não quer acompanhar custos e métricas</li><li>Espera um "produto vencedor" pronto</li></ul></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="modulos" class="alt">
   <div class="wrap">
     <div class="rv">
       <span class="eyebrow">Conteúdo</span>
       <h2>Os 7 módulos</h2>
-      <p class="lead">Estude um por vez, execute as atividades e registre os resultados. Toque num módulo para abrir.</p>
+      <p class="lead">Estude um por vez, faça as atividades e marque como concluído. Seu progresso fica salvo neste aparelho.</p>
     </div>
     <div class="prog"><div><i id="pfill"></i></div><span id="ptxt">0 de 7 concluídos</span></div>
     <div class="mods" id="mods"></div>
   </div>
 </section>
 
-<section id="simulador">
+<section id="ferramentas">
   <div class="wrap">
     <div class="rv">
-      <span class="eyebrow">Módulo 4 na prática</span>
-      <h2>Simulador de lucro por unidade</h2>
-      <p class="lead">Faturamento não é lucro. Altere os campos e veja o que realmente sobra de cada venda.</p>
+      <span class="eyebrow">Experimente agora</span>
+      <h2>Duas ferramentas do curso, na prática</h2>
+      <p class="lead">Mexa nos números e veja como a decisão muda. Os valores iniciais são fictícios.</p>
     </div>
-    <div class="calc">
-      <div class="panel rv" id="inputs"></div>
-      <div class="panel res rv">
-        <span class="eyebrow">Contribuição por unidade</span>
+    <div class="tabs" role="tablist" aria-label="Ferramentas">
+      <button class="tab" role="tab" id="t1" aria-selected="true" aria-controls="p1">Lucro por unidade</button>
+      <button class="tab" role="tab" id="t2" aria-selected="false" aria-controls="p2">Matriz de produto</button>
+    </div>
+    <div class="tool on" id="p1" role="tabpanel" aria-labelledby="t1">
+      <div class="panel" id="inputs"></div>
+      <div class="panel res">
+        <span class="eyebrow">Sobra por unidade</span>
         <div class="big" id="contrib">R$ 0,00</div>
         <div class="kpis">
           <div class="kpi"><span>Margem</span><b id="margem">0%</b></div>
           <div class="kpi"><span>ACOS</span><b id="acos">0%</b></div>
           <div class="kpi"><span>ROAS</span><b id="roas">0</b></div>
-          <div class="kpi"><span>Equilíbrio (custo fixo R$ 1.000)</span><b id="pe">—</b></div>
+          <div class="kpi"><span>Equilíbrio (fixo R$ 1.000)</span><b id="pe">—</b></div>
         </div>
-        <div class="bar"><i id="barfill"></i></div>
-        <p class="note">Valores ilustrativos e fictícios. Use as tarifas e impostos reais da sua operação.</p>
+        <div class="meter"><i id="mfill"></i></div>
+        <p class="note">Faturamento não é lucro. Use as tarifas e impostos reais da sua operação.</p>
       </div>
     </div>
-  </div>
-</section>
-
-<section id="matriz">
-  <div class="wrap">
-    <div class="rv">
-      <span class="eyebrow">Módulo 2 na prática</span>
-      <h2>Matriz de avaliação de produto</h2>
-      <p class="lead">Dê notas de 1 a 5 com base em evidências. A nota compara hipóteses; ela não prova que o produto vai vender.</p>
-    </div>
-    <div class="calc">
-      <div class="panel rv" id="sliders"></div>
-      <div class="panel res rv">
+    <div class="tool" id="p2" role="tabpanel" aria-labelledby="t2">
+      <div class="panel" id="sliders"></div>
+      <div class="panel res">
         <span class="eyebrow">Nota ponderada</span>
         <div class="score" id="score">0,00</div>
-        <div class="bar"><i id="sbar"></i></div>
+        <div class="meter"><i id="sbar"></i></div>
         <div class="verdict" id="verdict"></div>
-        <p class="note">Pesos sugeridos no curso: demanda 25%, margem 25%, concorrência 15%, reposição 15%, operação 10%, risco 10%. Em operação e risco, 5 = melhor (mais simples / menos arriscado).</p>
+        <p class="note">Pesos do curso: demanda 25%, margem 25%, concorrência 15%, reposição 15%, operação 10%, risco 10%. A nota compara hipóteses; não prova que o produto vai vender.</p>
       </div>
     </div>
   </div>
 </section>
 
-<section id="plano" style="background:var(--bg2)">
+<section id="plano" class="alt">
   <div class="wrap">
     <div class="rv">
       <span class="eyebrow">Roteiro</span>
@@ -369,18 +334,20 @@ footer{background:var(--accent2);color:#cfd4ff;border:0}footer b{color:#fff}
     <div class="tl">
       <div class="tl-item rv"><span class="d">Dias 1–7</span><h3>Estudar</h3><p>Categoria, público e regras. Entrega: resumo de 1 página e lista de dúvidas.</p></div>
       <div class="tl-item rv"><span class="d">Dias 8–14</span><h3>Comparar</h3><p>10 produtos e fornecedores. Entrega: matriz preenchida com custos estimados.</p></div>
-      <div class="tl-item rv"><span class="d">Dias 15–21</span><h3>Montar o teste</h3><p>Escolher um teste pequeno e criar o anúncio. Entrega: anúncio revisado antes de publicar.</p></div>
-      <div class="tl-item rv"><span class="d">Dias 22–30</span><h3>Acompanhar</h3><p>Visitas, perguntas, pedidos e margem. Entrega: relatório semanal e decisões registradas.</p></div>
+      <div class="tl-item rv"><span class="d">Dias 15–21</span><h3>Montar o teste</h3><p>Teste pequeno e anúncio. Entrega: anúncio revisado antes de publicar.</p></div>
+      <div class="tl-item rv"><span class="d">Dias 22–30</span><h3>Acompanhar</h3><p>Visitas, pedidos e margem. Entrega: relatório semanal e decisões registradas.</p></div>
+    </div>
+    <div class="gal">
+      <div class="gc rv"><img loading="lazy" src="img/p2.jpg" alt="Corredor de armazém com caixas"><div><b>Estoque sob controle</b><span>Entradas, saídas e reposição</span></div></div>
+      <div class="gc rv"><img loading="lazy" src="img/p5.jpg" alt="Galpão logístico organizado"><div><b>Logística organizada</b><span>Separar, embalar, despachar</span></div></div>
+      <div class="gc rv"><img loading="lazy" src="img/p4.jpg" alt="Notebook mostrando painel de métricas"><div><b>Decisão com dados</b><span>ACOS, ROAS e margem</span></div></div>
     </div>
   </div>
 </section>
 
 <section id="glossario">
   <div class="wrap">
-    <div class="rv">
-      <span class="eyebrow">Vocabulário</span>
-      <h2>Glossário essencial</h2>
-    </div>
+    <div class="rv"><span class="eyebrow">Vocabulário</span><h2>Glossário essencial</h2></div>
     <div class="gloss">
       <div class="g rv"><b>Faturamento</b><p>Valor total das vendas antes de descontar custos e despesas.</p></div>
       <div class="g rv"><b>Margem de contribuição</b><p>O que sobra da venda após custos variáveis; ajuda a pagar custos fixos e gerar lucro.</p></div>
@@ -392,25 +359,40 @@ footer{background:var(--accent2);color:#cfd4ff;border:0}footer b{color:#fff}
   </div>
 </section>
 
-<section class="final">
-  <div class="wrap rv">
-    <div class="box">
-      <h2>Pronto para sair da ideia vaga?</h2>
-      <p>Escolha um produto de teste e execute o ciclo completo: pesquisar, calcular, anunciar, entregar, medir e decidir.</p>
-      <a href="#modulos" class="btn btn-primary">Começar pelo Módulo 1</a>
+<section id="faq" class="alt">
+  <div class="wrap" style="max-width:780px">
+    <div class="rv"><span class="eyebrow">Dúvidas</span><h2>Perguntas frequentes</h2></div>
+    <div style="margin-top:28px">
+      <details><summary>O curso garante faturamento ou lucro?</summary><p>Não. O objetivo é desenvolver método e capacidade de decisão. Resultados variam conforme produto, capital, execução, concorrência e mercado.</p></details>
+      <details><summary>Preciso de CNPJ para começar?</summary><p>Depende da atividade, do volume e das regras fiscais. O Módulo 1 explica o que observar, mas confirme com um contador o enquadramento e as obrigações antes de vender de forma recorrente.</p></details>
+      <details><summary>Quanto preciso investir?</summary><p>O curso ajuda você a definir o quanto pode investir sem comprometer despesas essenciais e a estabelecer um limite de perda para o teste inicial.</p></details>
+      <details><summary>As tarifas do exemplo são oficiais?</summary><p>Não. Os números são ilustrativos. Tarifas, regras e logística do Mercado Livre mudam, então confira sempre os valores vigentes nos canais oficiais.</p></details>
+      <details><summary>Este curso é do Mercado Livre?</summary><p>Não. Ele não é afiliado, patrocinado ou aprovado pelo Mercado Livre. Nomes de serviços e marcas pertencem a seus titulares.</p></details>
     </div>
   </div>
 </section>
 
+<section class="final">
+  <div class="wrap rv">
+    <h2>Pronto para sair da ideia vaga?</h2>
+    <p>Escolha um produto de teste e execute o ciclo completo: pesquisar, calcular, anunciar, entregar, medir e decidir.</p>
+    <a href="#modulos" class="btn btn-primary">Começar pelo Módulo 1</a>
+  </div>
+</section>
+</main>
+
 <footer>
   <div class="wrap">
     <b>Lucas Livre</b> · Material educacional
-    <p>Este curso não é afiliado, patrocinado ou aprovado pelo Mercado Livre. Marcas pertencem a seus titulares. O material não substitui orientação contábil, jurídica ou tributária. Resultados variam e nenhum faturamento ou lucro é garantido.</p>
+    <p>Este curso não é afiliado, patrocinado ou aprovado pelo Mercado Livre. O material não substitui orientação contábil, jurídica ou tributária. Resultados variam e nenhum faturamento ou lucro é garantido. Fotos: Unsplash.</p>
   </div>
 </footer>
 
+<div class="sticky" id="sticky"><a href="#modulos" class="btn btn-primary">Ver os 7 módulos</a></div>
+
 <script>
-const modules=[
+const $ = id => document.getElementById(id);
+const modules = [
  {t:"Começando do zero",s:"Plano realista com orçamento e metas",items:["Como funciona uma operação de e-commerce","Começar pequeno, mas com controle","Pessoa física, CNPJ e obrigações","Plano inicial de 30 dias"],d:"Plano inicial de 30 dias"},
  {t:"Pesquisa de produtos e fornecedores",s:"Escolher com evidências, não com gosto",items:["Demanda, concorrência e economia unitária","Matriz de avaliação com pesos","Como analisar concorrentes","Como avaliar fornecedores"],d:"Matriz de seleção"},
  {t:"Anúncios que ajudam a vender",s:"Clareza que reduz dúvidas e devoluções",items:["O anúncio como página de decisão","Estrutura de um bom título","Imagens e ficha técnica","Checklist de publicação"],d:"Checklist de anúncio"},
@@ -419,98 +401,84 @@ const modules=[
  {t:"Publicidade e otimização",s:"Anúncios patrocinados com hipóteses mensuráveis",items:["Antes de anunciar","Métricas básicas","Exemplo de ACOS e ROAS","Plano de teste com regras de pausa"],d:"Painel de métricas"},
  {t:"Escala, caixa e profissionalização",s:"Crescer com processo e capital de giro",items:["Crescer com controle","Reinvestimento e capital de giro","Painel semanal de gestão","Plano de crescimento em 90 dias"],d:"Plano de crescimento"}
 ];
-const mods=document.getElementById('mods');
-modules.forEach((m,i)=>{
-  const el=document.createElement('div');el.className='mod rv';
-  el.innerHTML=`<button aria-expanded="false"><span class="num">${i+1}</span><span><h3>${m.t}</h3><small>${m.s}</small></span><span class="plus">+</span></button>
-  <div class="body"><div class="inner"><ul>${m.items.map(x=>`<li>${x}</li>`).join('')}</ul><span class="deliver">Entregável: ${m.d}</span><button class="done-btn" type="button">Marcar como concluído</button></div></div>`;
-  const b=el.querySelector('button'),body=el.querySelector('.body');
-  b.onclick=()=>{
-    const open=el.classList.toggle('open');
-    b.setAttribute('aria-expanded',open);
-    body.style.maxHeight=open?body.scrollHeight+'px':0;
+const store = {
+  get(){ try { return JSON.parse(localStorage.getItem("ll_done") || "[]"); } catch(e){ return []; } },
+  set(v){ try { localStorage.setItem("ll_done", JSON.stringify(v)); } catch(e){} }
+};
+const modsEl = $("mods");
+modules.forEach((m, i) => {
+  const el = document.createElement("div");
+  el.className = "mod rv";
+  el.innerHTML = `<button aria-expanded="false"><span class="num">${i+1}</span><span><h3>${m.t}</h3><small>${m.s}</small></span><span class="plus" aria-hidden="true">+</span></button>
+  <div class="body"><div class="inner"><ul>${m.items.map(x => `<li>${x}</li>`).join("")}</ul><span class="deliver">Entregável: ${m.d}</span><button class="done-btn" type="button">Marcar como concluído</button></div></div>`;
+  const b = el.querySelector("button"), body = el.querySelector(".body");
+  b.onclick = () => {
+    const open = el.classList.toggle("open");
+    b.setAttribute("aria-expanded", open);
+    body.style.maxHeight = open ? body.scrollHeight + "px" : 0;
   };
   el.querySelector(".done-btn").onclick = () => { el.classList.toggle("done"); saveProg(); };
-  mods.appendChild(el);
+  modsEl.appendChild(el);
 });
-const store = {
-  get() { try { return JSON.parse(localStorage.getItem("cl_done") || "[]"); } catch (e) { return []; } },
-  set(v) { try { localStorage.setItem("cl_done", JSON.stringify(v)); } catch (e) {} }
-};
-function saveProg() {
-  const els = [...document.querySelectorAll("#mods .mod")];
-  const d = els.map((e, i) => e.classList.contains("done") ? i : -1).filter(i => i >= 0);
+function saveProg(){
+  const els = [...modsEl.children];
+  const d = els.map((e,i) => e.classList.contains("done") ? i : -1).filter(i => i >= 0);
   store.set(d);
-  els.forEach(e => { e.querySelector(".done-btn").textContent = e.classList.contains("done") ? "✓ Concluído" : "Marcar como concluído"; });
-  document.getElementById("pfill").style.width = (d.length / 7 * 100) + "%";
-  document.getElementById("ptxt").textContent = d.length + " de 7 concluídos" + (d.length === 7 ? " 🎉" : "");
+  els.forEach(e => e.querySelector(".done-btn").textContent = e.classList.contains("done") ? "✓ Concluído" : "Marcar como concluído");
+  $("pfill").style.width = (d.length/7*100) + "%";
+  $("ptxt").textContent = d.length + " de 7 concluídos" + (d.length === 7 ? " 🎉" : "");
 }
-store.get().forEach(i => { const e = document.querySelectorAll("#mods .mod")[i]; if (e) e.classList.add("done"); });
+store.get().forEach(i => { if (modsEl.children[i]) modsEl.children[i].classList.add("done"); });
 saveProg();
 
-const fields=[["Preço de venda",169.9],["Custo do produto",72],["Tarifa do marketplace",25.49],["Frete / subsídio",15],["Embalagem e operação",3],["Imposto estimado",8.5],["Publicidade atribuída",16.99]];
-const box=document.getElementById('inputs');
-fields.forEach(([l,v],i)=>{
-  box.insertAdjacentHTML('beforeend',`<div class="field"><label for="f${i}">${l} (R$)</label><input id="f${i}" type="number" inputmode="decimal" step="0.01" value="${v}"></div>`);
-});
-const brl=n=>n.toLocaleString('pt-BR',{style:'currency',currency:'BRL'});
-function calc(){
-  const v=fields.map((_,i)=>parseFloat(document.getElementById('f'+i).value)||0);
-  const [price,...costs]=v, total=costs.reduce((a,b)=>a+b,0), c=price-total, ads=v[6];
-  const m=price?c/price*100:0;
-  const el=document.getElementById('contrib');
-  el.textContent=brl(c);el.className='big '+(c>=0?'pos':'neg');
-  document.getElementById('margem').textContent=m.toFixed(1).replace('.',',')+'%';
-  document.getElementById('acos').textContent=price?(ads/price*100).toFixed(1).replace('.',',')+'%':'—';
-  document.getElementById('roas').textContent=ads?(price/ads).toFixed(1).replace('.',','):'—';
-  document.getElementById('pe').textContent=c>0?Math.ceil(1000/c)+' un.':'inviável';
-  document.getElementById('barfill').style.width=Math.max(0,Math.min(100,m*3))+'%';
-}
-box.addEventListener('input',calc);calc();
+/* abas */
+const tabs = [["t1","p1"],["t2","p2"]];
+tabs.forEach(([t,p]) => $(t).onclick = () => tabs.forEach(([a,b]) => {
+  $(a).setAttribute("aria-selected", a === t); $(b).classList.toggle("on", b === p);
+}));
 
-const crit = [
-  ["Demanda observada", 25, "Há sinais recentes e consistentes de procura?"],
-  ["Margem estimada", 25, "Sobra contribuição depois dos custos variáveis?"],
-  ["Concorrência / diferenciação", 15, "Dá pra competir sem depender só do menor preço?"],
-  ["Reposição / fornecedor", 15, "Consigo repor com qualidade, prazo e documentação?"],
-  ["Complexidade operacional", 10, "É simples armazenar, embalar e atender?"],
-  ["Risco / sazonalidade", 10, "Pouca devolução, poucas restrições, procura estável?"]
-];
-const sb = document.getElementById("sliders");
-crit.forEach(([n, w, q], i) => sb.insertAdjacentHTML("beforeend",
-  `<div class="sl"><div class="top"><span>${n} <small>${q}</small></span><b id="sv${i}">3</b></div><input type="range" min="1" max="5" step="1" value="3" id="s${i}" aria-label="${n}"></div>`));
-function matrix() {
-  const val = i => +document.getElementById("s" + i).value;
-  const sc = crit.reduce((a, c, i) => a + val(i) * c[1] / 100, 0);
-  crit.forEach((_, i) => { document.getElementById("sv" + i).textContent = val(i); });
-  document.getElementById("score").textContent = sc.toFixed(2).replace(".", ",") + " / 5";
-  document.getElementById("sbar").style.width = (sc / 5 * 100) + "%";
-  document.getElementById("verdict").textContent = val(1) <= 2
-    ? "Atenção: margem baixa. Se a conta não fecha, o preço ainda não está validado."
+/* simulador */
+const fields = [["Preço de venda",169.9],["Custo do produto",72],["Tarifa do marketplace",25.49],["Frete / subsídio",15],["Embalagem e operação",3],["Imposto estimado",8.5],["Publicidade atribuída",16.99]];
+fields.forEach(([l,v],i) => $("inputs").insertAdjacentHTML("beforeend", `<div class="field"><label for="f${i}">${l} (R$)</label><input id="f${i}" type="number" inputmode="decimal" step="0.01" value="${v}"></div>`));
+const brl = n => n.toLocaleString("pt-BR",{style:"currency",currency:"BRL"});
+function calc(){
+  const v = fields.map((_,i) => parseFloat($("f"+i).value) || 0);
+  const price = v[0], c = price - v.slice(1).reduce((a,b) => a+b, 0), ads = v[6];
+  const m = price ? c/price*100 : 0;
+  $("contrib").textContent = brl(c);
+  $("contrib").className = "big " + (c >= 0 ? "pos" : "neg");
+  $("margem").textContent = m.toFixed(1).replace(".",",") + "%";
+  $("acos").textContent = price ? (ads/price*100).toFixed(1).replace(".",",") + "%" : "—";
+  $("roas").textContent = ads ? (price/ads).toFixed(1).replace(".",",") : "—";
+  $("pe").textContent = c > 0 ? Math.ceil(1000/c) + " un." : "inviável";
+  $("mfill").style.width = Math.max(0, Math.min(100, m*3)) + "%";
+}
+$("inputs").addEventListener("input", calc); calc();
+
+/* matriz */
+const crit = [["Demanda observada",25,"Há sinais recentes e consistentes de procura?"],["Margem estimada",25,"Sobra contribuição depois dos custos variáveis?"],["Concorrência / diferenciação",15,"Dá para competir sem depender só do menor preço?"],["Reposição / fornecedor",15,"Consigo repor com qualidade, prazo e documentação?"],["Complexidade operacional",10,"É simples armazenar, embalar e atender?"],["Risco / sazonalidade",10,"Pouca devolução, poucas restrições, procura estável?"]];
+crit.forEach(([n,w,q],i) => $("sliders").insertAdjacentHTML("beforeend", `<div class="sl"><div class="t"><span>${n}<small>${q}</small></span><b id="sv${i}">3</b></div><input type="range" min="1" max="5" step="1" value="3" id="s${i}" aria-label="${n}"></div>`));
+function matrix(){
+  const val = i => +$("s"+i).value;
+  const sc = crit.reduce((a,c,i) => a + val(i)*c[1]/100, 0);
+  crit.forEach((_,i) => $("sv"+i).textContent = val(i));
+  $("score").textContent = sc.toFixed(2).replace(".",",") + " / 5";
+  $("sbar").style.width = (sc/5*100) + "%";
+  $("verdict").textContent = val(1) <= 2 ? "Atenção: margem baixa. Se a conta não fecha, o preço ainda não está validado."
     : sc >= 4 ? "Candidato forte para um teste pequeno. Valide custos reais e fornecedor."
     : sc >= 3 ? "Promissor, mas há pontos fracos. Busque mais evidências antes de comprar."
     : "Fraco por enquanto. Compare com outras opções antes de investir.";
 }
-sb.addEventListener("input", matrix); matrix();
+$("sliders").addEventListener("input", matrix); matrix();
 
-const pbar = document.getElementById("progress");
-const secs = [...document.querySelectorAll("section[id]")];
-const lks = [...document.querySelectorAll(".links a")];
+/* barra de leitura, CTA fixo no mobile e reveal */
 addEventListener("scroll", () => {
   const d = document.documentElement;
-  pbar.style.width = (d.scrollTop / (d.scrollHeight - d.clientHeight) * 100) + "%";
-  let cur = ""; secs.forEach(s => { if (s.getBoundingClientRect().top < 140) cur = s.id; });
-  lks.forEach(a => a.classList.toggle("on", a.getAttribute("href") === "#" + cur));
-}, { passive: true });
-
-document.querySelectorAll("[data-n]").forEach(el => {
-  const t = +el.dataset.n; let n = 0;
-  const step = () => { n += Math.max(1, Math.ceil(t / 30)); if (n >= t) { el.textContent = t; } else { el.textContent = n; requestAnimationFrame(step); } };
-  el.textContent = 0; setTimeout(step, 300);
-});
-
-const io=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target)}}),{threshold:.12});
-document.querySelectorAll('.rv').forEach(el=>io.observe(el));
+  $("bar").style.width = (d.scrollTop/(d.scrollHeight-d.clientHeight)*100) + "%";
+  $("sticky").classList.toggle("show", d.scrollTop > 600);
+}, {passive:true});
+const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.1});
+document.querySelectorAll(".rv").forEach(el => io.observe(el));
 </script>
 </body>
 </html>
