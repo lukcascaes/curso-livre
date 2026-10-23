@@ -195,6 +195,20 @@ footer b{color:#fff}footer p{max-width:660px;margin:8px auto 0}
   footer{padding-bottom:36px}
 }
 @media(min-width:1000px){.grid{grid-template-columns:repeat(3,1fr)}}
+
+/* botão gigante de latidos */
+.bark{min-height:calc(100svh - 64px);display:grid;place-items:center;text-align:center;padding:32px 0;overflow:hidden;position:relative;background:radial-gradient(circle at 50% 45%,#ffe3c4 0,var(--bg) 70%)}
+.bark h2{font-size:clamp(1.4rem,5vw,2.2rem);margin-bottom:6px}
+.bark p{color:var(--muted);margin-bottom:28px}
+#barkBtn{width:min(72vw,340px);aspect-ratio:1;border-radius:50%;border:0;cursor:pointer;font-family:inherit;color:#26242a;background:radial-gradient(circle at 35% 30%,#ffb56b,var(--amber) 55%,var(--amber-dk));box-shadow:0 0 0 10px rgba(240,122,18,.18),0 30px 60px -20px rgba(217,106,8,.7),inset 0 -10px 20px rgba(0,0,0,.12);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;transition:transform .12s;animation:beat 2.2s ease-in-out infinite;-webkit-tap-highlight-color:transparent}
+#barkBtn:active,#barkBtn.hit{transform:scale(.92);animation:none}
+#barkBtn .e{font-size:clamp(4rem,22vw,7rem);line-height:1}
+#barkBtn .t{font-weight:800;font-size:clamp(1.1rem,4.5vw,1.6rem);letter-spacing:.06em}
+@keyframes beat{50%{transform:scale(1.04)}}
+#barkCount{margin-top:22px;font-weight:600;color:var(--teal-mid);min-height:1.6em}
+.dog{position:fixed;top:-80px;z-index:200;pointer-events:none;font-size:2.4rem;animation:drop linear forwards;will-change:transform}
+@keyframes drop{to{transform:translateY(calc(100vh + 140px)) rotate(var(--rot))}}
+@media (prefers-reduced-motion:reduce){#barkBtn{animation:none!important}}
 </style>
 </head>
 <body>
@@ -211,6 +225,15 @@ footer b{color:#fff}footer p{max-width:660px;margin:8px auto 0}
 </header>
 
 <main id="top">
+<section class="bark" aria-label="Botão de latidos">
+  <div class="wrap">
+    <h2>Pronto pra soltar a matilha?</h2>
+    <p>Aperte o botão (com o som ligado).</p>
+    <button id="barkBtn" type="button" aria-label="Soltar cachorros"><span class="e">🐶</span><span class="t">APERTE</span></button>
+    <div id="barkCount" aria-live="polite"></div>
+  </div>
+</section>
+
 <section class="hero">
   <div class="wrap">
     <div class="rv">
@@ -479,6 +502,64 @@ addEventListener("scroll", () => {
 }, {passive:true});
 const io = new IntersectionObserver(es => es.forEach(e => { if (e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target); } }), {threshold:.1});
 document.querySelectorAll(".rv").forEach(el => io.observe(el));
+
+/* botão de latidos: som sintetizado (Web Audio), sem arquivo de áudio */
+let actx, barks = 0;
+function bark(at, pitch, len){
+  const t0 = actx.currentTime + at;
+  const o = actx.createOscillator(), o2 = actx.createOscillator(), g = actx.createGain();
+  const f1 = actx.createBiquadFilter(), f2 = actx.createBiquadFilter();
+  o.type = "sawtooth"; o2.type = "square";
+  o.frequency.setValueAtTime(pitch * 1.5, t0);
+  o.frequency.exponentialRampToValueAtTime(pitch * .8, t0 + len);
+  o2.frequency.setValueAtTime(pitch * 1.52, t0);
+  o2.frequency.exponentialRampToValueAtTime(pitch * .78, t0 + len);
+  f1.type = "bandpass"; f1.frequency.value = 700; f1.Q.value = 3;
+  f2.type = "bandpass"; f2.frequency.value = 1800; f2.Q.value = 4;
+  g.gain.setValueAtTime(0.0001, t0);
+  g.gain.exponentialRampToValueAtTime(0.9, t0 + 0.015);
+  g.gain.exponentialRampToValueAtTime(0.0001, t0 + len);
+  o.connect(f1); o2.connect(f2); f1.connect(g); f2.connect(g); g.connect(actx.destination);
+  o.start(t0); o2.start(t0); o.stop(t0 + len + .02); o2.stop(t0 + len + .02);
+  /* ruído para o "chiado" do latido */
+  const n = actx.createBuffer(1, actx.sampleRate * len, actx.sampleRate), d = n.getChannelData(0);
+  for (let i = 0; i < d.length; i++) d[i] = (Math.random() * 2 - 1) * (1 - i / d.length);
+  const ns = actx.createBufferSource(), ng = actx.createGain(), nf = actx.createBiquadFilter();
+  ns.buffer = n; nf.type = "bandpass"; nf.frequency.value = 1400; nf.Q.value = .8; ng.gain.value = .35;
+  ns.connect(nf); nf.connect(ng); ng.connect(actx.destination); ns.start(t0);
+}
+function dogs(){
+  const set = ["🐶","🐕","🦮","🐕‍🦺","🐩","🐾"];
+  for (let i = 0; i < 26; i++){
+    const el = document.createElement("span");
+    el.className = "dog"; el.textContent = set[Math.floor(Math.random() * set.length)];
+    el.style.left = Math.random() * 96 + "vw";
+    el.style.fontSize = (1.8 + Math.random() * 2.4) + "rem";
+    el.style.setProperty("--rot", (Math.random() * 720 - 360) + "deg");
+    el.style.animationDuration = (1.6 + Math.random() * 2.2) + "s";
+    el.style.animationDelay = (Math.random() * .7) + "s";
+    document.body.appendChild(el);
+    setTimeout(() => el.remove(), 5000);
+  }
+}
+$("barkBtn").addEventListener("click", () => {
+  try {
+    actx = actx || new (window.AudioContext || window.webkitAudioContext)();
+    actx.resume();
+    const n = 4 + Math.floor(Math.random() * 4);
+    let t = 0;
+    for (let i = 0; i < n; i++){
+      const big = Math.random() < .5;
+      bark(t, big ? 190 + Math.random() * 40 : 300 + Math.random() * 80, big ? .2 : .13);
+      t += .22 + Math.random() * .18;
+    }
+    barks += n;
+  } catch (e) {}
+  dogs();
+  if (navigator.vibrate) navigator.vibrate([60, 40, 60, 40, 60]);
+  const b = $("barkBtn"); b.classList.add("hit"); setTimeout(() => b.classList.remove("hit"), 150);
+  $("barkCount").textContent = "🔊 Latidos soltos: " + barks;
+});
 </script>
 </body>
 </html>
